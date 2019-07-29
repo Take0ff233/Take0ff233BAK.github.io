@@ -16,7 +16,7 @@
 <meta property="og:description" content="走过的路踩过的坑，名为学习">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/img/4.Rests/%E5%85%AD%E8%89%B2%E6%8F%8F%E8%BF%B0.jpg">
-<meta property="og:updated_time" content="2019-07-22T06:23:03.856Z">
+<meta property="og:updated_time" content="2019-07-29T02:24:57.067Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="走过的路，踩过的坑">
 <meta name="twitter:description" content="走过的路踩过的坑，名为学习">
@@ -203,6 +203,7 @@ var _hmt = _hmt || [];
 <p><a href="/2019/07/07/other/9.Email-ActiveMQ/"><strong>ActiveMQ</strong>异步发送Email</a></p>
 <p><a href="/2019/07/17/other/10.Lucene/">搜索引擎<strong>Lucene</strong></a></p>
 <p><a href="/2019/07/17/other/11.ElasticSearch/">搜索引擎<strong>ElasticSearch</strong></a></p>
+<p><a href="/2019/07/29/other/12.Vue练习/"><strong>Vue</strong>的快速入门</a></p>
 <br>
 
 <br>
@@ -264,6 +265,12 @@ var _hmt = _hmt || [];
 <p><strong>二分查找</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 二分查找</span></span><br><span class="line"><span class="comment"> * 数组必须有序</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> 二分查找()&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 初始化一个数组</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">int</span>[] testArr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; testArr.length; i++)&#123;</span><br><span class="line">        testArr[i] = i+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设定初始值</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="comment">//要查询的值</span></span><br><span class="line">    <span class="keyword">int</span> key = <span class="number">30</span>;</span><br><span class="line">    <span class="comment">//起点</span></span><br><span class="line">    <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//终点</span></span><br><span class="line">    <span class="keyword">int</span> end = testArr.length -<span class="number">1</span>;</span><br><span class="line">    <span class="comment">//中点</span></span><br><span class="line">    <span class="keyword">int</span> mid;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 查询体</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">while</span>(start &lt;= end)&#123;</span><br><span class="line">        <span class="comment">//中点 = (终点 - 起点) / 2</span></span><br><span class="line">        mid = start + (end - start) / <span class="number">2</span>;</span><br><span class="line">        System.out.println(mid);</span><br><span class="line">        <span class="comment">//如果查询的值小于中点值,重设终点;</span></span><br><span class="line">        <span class="keyword">if</span> (key &lt; testArr[mid])&#123;</span><br><span class="line">            end = mid;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//如果要查询的值大于终点值,重设起点;</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (key &gt; testArr[mid])&#123;</span><br><span class="line">            start = mid;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//如果相等则输出数组索引对应的值,结束循环</span></span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            System.err.println(testArr[mid]);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<br>
+
+<p><strong>蚂蚁上树</strong></p>
+<br>
+
+<p><strong>汉诺塔</strong></p>
 <br>
 
 <br>
@@ -397,18 +404,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2019/06/25/1.小博客首页跳转目录/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/06/20/other/4.JavaUpload/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          温故才能知新 - 推翻与重建
+          Java操作Excel -&gt; POI
         
       </div>
     </a>
   
   
-    <a href="/2019/06/20/other/4.JavaUpload/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java操作Excel -&gt; POI</div>
+    <a href="/2019/06/14/other/3.一份关于HashMap的自总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">一份关于HashMap的自总结</div>
       <i class="icon-circle-right"></i>
     </a>
   

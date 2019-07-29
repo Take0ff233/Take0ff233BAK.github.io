@@ -16,7 +16,7 @@
 <meta property="og:description" content="ApacheDubbo是一款高性能的JavaRPC框架。其前身是阿里巴巴公司开源的一个高性能、轻量级的开源JavaRPC框架，可以和Spring框架无缝集成。 实现基本的分布式搭建和运行">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/img/ApacheDubbo/Dubbo1.png">
-<meta property="og:updated_time" content="2019-07-21T07:24:25.190Z">
+<meta property="og:updated_time" content="2019-07-29T02:31:07.133Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apache Dubbo">
 <meta name="twitter:description" content="ApacheDubbo是一款高性能的JavaRPC框架。其前身是阿里巴巴公司开源的一个高性能、轻量级的开源JavaRPC框架，可以和Spring框架无缝集成。 实现基本的分布式搭建和运行">
@@ -196,6 +196,24 @@ var _hmt = _hmt || [];
 <p><code>SOA全称为Service-OrientedArchitecture，即面向服务的架构。</code></p>
 <p><code>它可以根据需求通过网络对松散耦合的粗粒度应用组件(服务)进行分布式部署、组合和使用。</code></p>
 <hr>
+<blockquote>
+<p><strong>RPC和HTTP</strong></p>
+<br>
+
+<ul>
+<li>Remote Produce Call 远程过程调用，类似的还有RMI（remote method invoke）。</li>
+<li>自定义数据格式，基于原生TCP通信，速度快，效率高。</li>
+<li>早期的webservice，现在热门的dubbo，都是RPC的典型代表.</li>
+</ul>
+<br>
+
+<ul>
+<li>http其实是一种网络传输协议，基于TCP，规定了数据传输的格式。</li>
+<li>现在客户端浏览器与服务端通信基本都是采用Http协议，也可以用来进行远程服务调用。</li>
+<li>缺点是消息封装臃肿，优势是对服务的提供和调用方没有任何技术限定，自由灵活。</li>
+<li>现在热门的Rest风格，就可以通过http协议来实现。</li>
+</ul>
+</blockquote>
 <h1 id="Apache-Dubbo"><a href="#Apache-Dubbo" class="headerlink" title="Apache Dubbo"></a>Apache Dubbo</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">要注意父工程中添加这两个依赖：</span><br><span class="line"><span class="comment">&lt;!-- dubbo2.6.X以上的版本开始 2.8.4不需要 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- dubbo2.8.X是当当网修改的版本,不是最新的 --&gt;</span></span><br><span class="line">netty-all</span><br><span class="line">curator-framework</span><br></pre></td></tr></table></figure>
 
 <h2 id="dubbo图解"><a href="#dubbo图解" class="headerlink" title="dubbo图解"></a>dubbo图解</h2><p><img src="/img/ApacheDubbo/Dubbo1.png" alt></p>
