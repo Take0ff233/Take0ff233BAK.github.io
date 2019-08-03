@@ -17,7 +17,7 @@
 <meta property="og:description" content="ApacheDubbo是一款高性能的JavaRPC框架。其前身是阿里巴巴公司开源的一个高性能、轻量级的开源JavaRPC框架，可以和Spring框架无缝集成。 实现基本的分布式搭建和运行">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/img/ApacheDubbo/Dubbo1.png">
-<meta property="og:updated_time" content="2019-07-30T01:03:24.783Z">
+<meta property="og:updated_time" content="2019-08-03T06:26:48.238Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apache Dubbo">
 <meta name="twitter:description" content="ApacheDubbo是一款高性能的JavaRPC框架。其前身是阿里巴巴公司开源的一个高性能、轻量级的开源JavaRPC框架，可以和Spring框架无缝集成。 实现基本的分布式搭建和运行">
@@ -190,32 +190,35 @@ var _hmt = _hmt || [];
 
 <br>
 
-<hr>
-<p><strong>什么是SOA？</strong></p>
-<p><code>SOA全称为Service-OrientedArchitecture，即面向服务的架构。</code></p>
-<p><code>它可以根据需求通过网络对松散耦合的粗粒度应用组件(服务)进行分布式部署、组合和使用。</code></p>
-<hr>
-<blockquote>
-<p><strong>RPC和HTTP</strong></p>
-<br>
-
+<p><strong>SOA？</strong></p>
+<ul>
+<li>SOA全称为Service-OrientedArchitecture，即面向服务的架构。</li>
+<li>它可以根据需求通过网络对松散耦合的粗粒度应用组件(服务)进行分布式部署、组合和使用。</li>
+</ul>
+<p><strong>RPC</strong></p>
 <ul>
 <li>Remote Produce Call 远程过程调用，类似的还有RMI（remote method invoke）。</li>
 <li>自定义数据格式，基于原生TCP通信，速度快，效率高。</li>
 <li>早期的webservice，现在热门的dubbo，都是RPC的典型代表.</li>
 </ul>
-<br>
-
+<p><strong>HTTP</strong></p>
 <ul>
 <li>http其实是一种网络传输协议，基于TCP，规定了数据传输的格式。</li>
 <li>现在客户端浏览器与服务端通信基本都是采用Http协议，也可以用来进行远程服务调用。</li>
 <li>缺点是消息封装臃肿，优势是对服务的提供和调用方没有任何技术限定，自由灵活。</li>
 <li>现在热门的Rest风格，就可以通过http协议来实现。</li>
 </ul>
-</blockquote>
-<h1 id="Apache-Dubbo"><a href="#Apache-Dubbo" class="headerlink" title="Apache Dubbo"></a>Apache Dubbo</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">要注意父工程中添加这两个依赖：</span><br><span class="line"><span class="comment">&lt;!-- dubbo2.6.X以上的版本开始 2.8.4不需要 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- dubbo2.8.X是当当网修改的版本,不是最新的 --&gt;</span></span><br><span class="line">netty-all</span><br><span class="line">curator-framework</span><br></pre></td></tr></table></figure>
+<br>
 
-<h2 id="dubbo图解"><a href="#dubbo图解" class="headerlink" title="dubbo图解"></a>dubbo图解</h2><p><img src="/img/ApacheDubbo/Dubbo1.png" alt></p>
+<br>
+
+<h1 id="Dubbo"><a href="#Dubbo" class="headerlink" title="Dubbo"></a>Dubbo</h1><p><strong>依赖</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- dubbo2.6.X以上的版本开始 2.8.4不需要 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- dubbo2.8.X是当当网修改的版本,不是最新的 --&gt;</span></span><br><span class="line">netty-all</span><br><span class="line">curator-framework</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p><strong>dubbo图解</strong></p>
+<p><img src="/img/ApacheDubbo/Dubbo1.png" alt></p>
 <table>
 <thead>
 <tr>
@@ -244,74 +247,139 @@ var _hmt = _hmt || [];
 <td align="center">服务运行容器</td>
 </tr>
 </tbody></table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">服务容器负责启动，加载，运行服务提供者。</span><br><span class="line">服务提供者在启动时，向注册中心注册自己提供的服务。</span><br><span class="line">服务消费者在启动时，向注册中心订阅自己所需的服务。</span><br><span class="line">注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者。</span><br><span class="line">服务消费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用。</span><br><span class="line">服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>服务容器负责启动，加载，运行服务提供者。</li>
+<li>服务提供者在启动时，向注册中心注册自己提供的服务。</li>
+<li>服务消费者在启动时，向注册中心订阅自己所需的服务。</li>
+<li>注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者。</li>
+<li>服务消费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用。</li>
+<li>服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。</li>
+</ul>
+<br>
 
-<h2 id="服务注册中心Zookeeper"><a href="#服务注册中心Zookeeper" class="headerlink" title="服务注册中心Zookeeper"></a>服务注册中心Zookeeper</h2><blockquote>
-<p>Zookeeper 是 Apache Hadoop 的子项目，是一个树型的目录服务，支持变更推送，适合作为 Dubbo 服务的注册中心，工业强度较高，可用于生产环境，并推荐使用 。</p>
-</blockquote>
-<h2 id="Dubbo快速入门"><a href="#Dubbo快速入门" class="headerlink" title="Dubbo快速入门"></a>Dubbo快速入门</h2><h3 id="服务提供者开发"><a href="#服务提供者开发" class="headerlink" title="服务提供者开发"></a>服务提供者开发</h3><h4 id="1-创建maven工程（打包方式为war），在pom-xml文件中导入Spring和dubbo的依赖"><a href="#1-创建maven工程（打包方式为war），在pom-xml文件中导入Spring和dubbo的依赖" class="headerlink" title="1.创建maven工程（打包方式为war），在pom.xml文件中导入Spring和dubbo的依赖"></a>1.创建maven工程（打包方式为war），在pom.xml文件中导入Spring和dubbo的依赖</h4><h4 id="2-配置web-xml文件"><a href="#2-配置web-xml文件" class="headerlink" title="2.配置web.xml文件"></a>2.配置web.xml文件</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">display-name</span>&gt;</span>Archetype Created Web Application<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath*:applicationContext*.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<br>
 
-<h4 id="3-创建服务接口"><a href="#3-创建服务接口" class="headerlink" title="3.创建服务接口"></a>3.创建服务接口</h4><h4 id="4-创建服务实现类"><a href="#4-创建服务实现类" class="headerlink" title="4.创建服务实现类"></a>4.创建服务实现类</h4><h4 id="5-创建applicationContext-service-xml"><a href="#5-创建applicationContext-service-xml" class="headerlink" title="5.创建applicationContext-service.xml"></a>5.创建applicationContext-service.xml</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 当前应用名称，用于注册中心计算应用间依赖关系，注意：消费者和提供者应用名不要一样 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:application</span> <span class="attr">name</span>=<span class="string">"#"</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 连接服务注册中心zookeeper ip为zookeeper所在服务器的ip地址--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:registry</span> <span class="attr">address</span>=<span class="string">"zookeeper://127.0.0.1:2181"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 注册  协议和port   端口默认是20880 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:protocol</span> <span class="attr">name</span>=<span class="string">"dubbo"</span> <span class="attr">port</span>=<span class="string">"20881"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 扫描指定包，加入@Service注解的类会被发布为服务  --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:annotation</span> <span class="attr">package</span>=<span class="string">"#"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="一、服务注册中心Zookeeper"><a href="#一、服务注册中心Zookeeper" class="headerlink" title="一、服务注册中心Zookeeper"></a>一、服务注册中心Zookeeper</h2><p><code>Zookeeper 是 Apache Hadoop 的子项目，是一个树型的目录服务，支持变更推送，适合作为 Dubbo 服务的注册中心，工业强度较高，可用于生产环境，并推荐使用。</code></p>
+<br>
 
-<h3 id="服务消费者开发"><a href="#服务消费者开发" class="headerlink" title="服务消费者开发"></a>服务消费者开发</h3><h4 id="1-创建maven工程（打包方式为war）"><a href="#1-创建maven工程（打包方式为war）" class="headerlink" title="1.创建maven工程（打包方式为war）"></a>1.创建maven工程（打包方式为war）</h4><h4 id="2-配置web-xml文件-1"><a href="#2-配置web-xml文件-1" class="headerlink" title="2.配置web.xml文件"></a>2.配置web.xml文件</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">display-name</span>&gt;</span>Archetype Created Web Application<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>Spring<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 指定加载的配置文件 ，通过参数contextConfigLocation加载 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:applicationContext-web.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>Spring<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>*.do<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<br>
 
-<h4 id="3-将服务提供者工程中的HelloService接口复制到当前工程"><a href="#3-将服务提供者工程中的HelloService接口复制到当前工程" class="headerlink" title="3.将服务提供者工程中的HelloService接口复制到当前工程"></a>3.将服务提供者工程中的HelloService接口复制到当前工程</h4><h4 id="4-编写Controller"><a href="#4-编写Controller" class="headerlink" title="4.编写Controller"></a>4.编写Controller</h4><h4 id="5-创建applicationContext-web-xml"><a href="#5-创建applicationContext-web-xml" class="headerlink" title="5.创建applicationContext-web.xml"></a>5.创建applicationContext-web.xml</h4><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><blockquote>
-<p>思考一：上面的Dubbo入门案例中我们是将HelloService接口从服务提供者工程(dubbodemo_provider)复制到服务消费者工程(dubbodemo_consumer)中，这种做法是否合适？还有没有更好的方式？</p>
-</blockquote>
-<blockquote>
-<p> 答：这种做法显然是不好的，同一个接口被复制了两份，不利于后期维护。更好的方式是单独创建一个maven工程，将此接口创建在这个maven工程中。需要依赖此接口的工程只需要在自己工程的pom.xml文件中引入maven坐标即可。</p>
-</blockquote>
-<blockquote>
-<p>思考二：在服务消费者工程(dubbodemo_consumer)中只是引用了HelloService接口，并没有提供实现类，Dubbo是如何做到远程调用的？</p>
-</blockquote>
-<blockquote>
-<p> 答：Dubbo底层是基于代理技术为HelloService接口创建代理对象，远程调用是通过此代理对象完成的。可以通过开发工具的debug功能查看此代理对象的内部结构。另外，Dubbo实现网络传输底层是基于Netty框架完成的。</p>
-</blockquote>
-<blockquote>
-<p>思考三：上面的Dubbo入门案例中我们使用Zookeeper作为服务注册中心，服务提供者需要将自己的服务信息注册到Zookeeper，服务消费者需要从Zookeeper订阅自己所需要的服务，此时Zookeeper服务就变得非常重要了，那如何防止Zookeeper单点故障呢？</p>
-</blockquote>
-<blockquote>
-<p>答：Zookeeper其实是支持集群模式的，可以配置Zookeeper集群来达到Zookeeper服务的高可用，防止出现单点故障。</p>
-</blockquote>
+<h2 id="二、Dubbo快速入门"><a href="#二、Dubbo快速入门" class="headerlink" title="二、Dubbo快速入门"></a>二、Dubbo快速入门</h2><h3 id="1-服务提供者开发"><a href="#1-服务提供者开发" class="headerlink" title="1.服务提供者开发"></a>1.服务提供者开发</h3><ul>
+<li>1.1 创建maven工程（打包方式为war），在pom.xml文件中导入Spring和dubbo的依赖</li>
+<li>1.2 配置web.xml文件</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">display-name</span>&gt;</span>Archetype Created Web Application<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath*:applicationContext*.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>1.3 创建服务接口</li>
+<li>1.4 创建服务实现类</li>
+<li>1.5 创建applicationContext-service.xml</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 当前应用名称，用于注册中心计算应用间依赖关系，注意：消费者和提供者应用名不要一样 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:application</span> <span class="attr">name</span>=<span class="string">"#"</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 连接服务注册中心zookeeper ip为zookeeper所在服务器的ip地址--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:registry</span> <span class="attr">address</span>=<span class="string">"zookeeper://127.0.0.1:2181"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 注册  协议和port   端口默认是20880 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:protocol</span> <span class="attr">name</span>=<span class="string">"dubbo"</span> <span class="attr">port</span>=<span class="string">"20881"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 扫描指定包，加入@Service注解的类会被发布为服务  --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:annotation</span> <span class="attr">package</span>=<span class="string">"#"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<br>
+
+<h3 id="2-服务消费者开发"><a href="#2-服务消费者开发" class="headerlink" title="2.服务消费者开发"></a>2.服务消费者开发</h3><ul>
+<li>2.1.创建maven工程（打包方式为war） </li>
+<li>2.2 配置web.xml文件</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">display-name</span>&gt;</span>Archetype Created Web Application<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>Spring<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 指定加载的配置文件 ，通过参数contextConfigLocation加载 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:applicationContext-web.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>Spring<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>*.do<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>2.3 将服务提供者工程中的HelloService接口复制到当前工程</li>
+<li>2.4.编写Controller</li>
+<li>2.5.创建applicationContext-web.xml</li>
+</ul>
+<br>
+
+<br>
+
+<p><strong>一些问题：</strong></p>
+<ul>
+<li><p>在服务消费者工程(dubbodemo_consumer)中只是引用了HelloService接口，并没有提供实现类，Dubbo是如何做到远程调用的？</p>
+<ul>
+<li>答：Dubbo底层是基于代理技术为HelloService接口创建代理对象，远程调用是通过此代理对象完成的。可以通过开发工具的debug功能查看此代理对象的内部结构。另外，Dubbo实现网络传输底层是基于Netty框架完成的。</li>
+</ul>
+</li>
+<li><p>上面的Dubbo入门案例中我们使用Zookeeper作为服务注册中心，服务提供者需要将自己的服务信息注册到Zookeeper，服务消费者需要从Zookeeper订阅自己所需要的服务，此时Zookeeper服务就变得非常重要了，那如何防止Zookeeper单点故障呢？</p>
+<ul>
+<li>答：Zookeeper其实是支持集群模式的，可以配置Zookeeper集群来达到Zookeeper服务的高可用，防止出现单点故障。</li>
+</ul>
+</li>
+</ul>
 <hr>
-<h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><blockquote>
-<p>负载均衡（Load Balance）：其实就是将请求分摊到多个操作单元上进行执行，从而共同完成工作任务。</p>
-<p>在集群负载均衡时，Dubbo 提供了多种均衡策略（包括随机、轮询、最少活跃调用数、一致性Hash），缺省为random随机调用。</p>
-<p>配置负载均衡策略，既可以在服务提供者一方配置，也可以在服务消费者一方配置。</p>
-</blockquote>
+<br>
+
+<br>
+
+<h3 id="3-负载均衡"><a href="#3-负载均衡" class="headerlink" title="3.负载均衡"></a>3.负载均衡</h3><ul>
+<li>负载均衡（Load Balance）：其实就是将请求分摊到多个操作单元上进行执行，从而共同完成工作任务。</li>
+</ul>
+<p><code>在集群负载均衡时，Dubbo 提供了多种均衡策略（包括随机、轮询、最少活跃调用数、一致性Hash），缺省为random随机调用。</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在服务消费者一方配置负载均衡策略</span></span><br><span class="line">   <span class="meta">@Reference</span>(check = <span class="keyword">false</span>,loadbalance = <span class="string">"random"</span>)</span><br><span class="line">   <span class="keyword">private</span> HelloService helloService;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在服务提供者一方配置负载均衡</span></span><br><span class="line"><span class="meta">@Service</span>(interfaceClass = HelloService.class,loadbalance = <span class="string">"random"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloServiceImpl</span> <span class="keyword">implements</span> <span class="title">HelloService</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">"hello "</span> + name;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="Dubbo管理控制台"><a href="#Dubbo管理控制台" class="headerlink" title="Dubbo管理控制台"></a>Dubbo管理控制台</h2><h4 id="访问http-localhost-8080-dubbo-admin-2-6-0-，输入用户名-root-和密码-root"><a href="#访问http-localhost-8080-dubbo-admin-2-6-0-，输入用户名-root-和密码-root" class="headerlink" title="访问http://localhost:8080/dubbo-admin-2.6.0/，输入用户名(root)和密码(root)"></a>访问<a href="http://localhost:8080/dubbo-admin-2.6.0/" target="_blank" rel="noopener">http://localhost:8080/dubbo-admin-2.6.0/</a>，输入用户名(root)和密码(root)</h4><br>
+<br>
 
 <br>
 
-<blockquote>
-<ul>
-<li><strong>这边的不用看</strong></li>
+<h2 id="三、Dubbo管理控制台"><a href="#三、Dubbo管理控制台" class="headerlink" title="三、Dubbo管理控制台"></a>三、Dubbo管理控制台</h2><ul>
+<li>访问<a href="http://localhost:8080/dubbo-admin-2.6.0/" target="_blank" rel="noopener">http://localhost:8080/dubbo-admin-2.6.0/</a>，输入用户名(root)和密码(root)</li>
 </ul>
-</blockquote>
-<h3 id="1-服务提供者开发"><a href="#1-服务提供者开发" class="headerlink" title="1.服务提供者开发"></a>1.服务提供者开发</h3><p>（1）   在export_company_service工程中添加CompanyServiceImpl实现类</p>
-<p><code>使用Dubbo的Service注解替换Spring注解，声明Dubbo服务</code></p>
-<p>（2）   在export_company_interface工程中添加CompanyService接口</p>
-<p>（3）   删除export_system_service工程中相关代码</p>
-<p>（4）   添加dubbo服务提供者配置applicationContext-dubbo.xml</p>
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<h2 id="四、代码记录：修改原有方法实现分布式治理"><a href="#四、代码记录：修改原有方法实现分布式治理" class="headerlink" title="四、代码记录：修改原有方法实现分布式治理"></a>四、代码记录：修改原有方法实现分布式治理</h2><p><strong>1.服务提供者开发</strong></p>
+<ul>
+<li>（1）   在export_company_service工程中添加CompanyServiceImpl实现类<ul>
+<li>使用Dubbo的Service注解替换Spring注解，声明Dubbo服务</li>
+</ul>
+</li>
+<li>（2）  在export_company_interface工程中添加CompanyService接口</li>
+<li>（3）   删除export_system_service工程中相关代码</li>
+<li>（4）   添加dubbo服务提供者配置applicationContext-dubbo.xml</li>
+</ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dubbo:protocol</span> <span class="attr">name</span>=<span class="string">"dubbo"</span> <span class="attr">port</span>=<span class="string">"20881"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:application</span> <span class="attr">name</span>=<span class="string">"模块名"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:registry</span> <span class="attr">address</span>=<span class="string">"zookeeper://127.0.0.1:2181"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:annotation</span> <span class="attr">package</span>=<span class="string">"包地址"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>（5）   添加web.xml配置</p>
+<ul>
+<li>(5)   添加web.xml配置</li>
+</ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">display-name</span>&gt;</span>Archetype Created Web Application<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:spring/applicationContext*.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="2-管理后台改造"><a href="#2-管理后台改造" class="headerlink" title="2.管理后台改造"></a>2.管理后台改造</h3><p>（1）   添加pom依赖</p>
-<p>（2）   添加dubbo消费者配置</p>
+<br>
+
+<br>
+
+<h3 id="2-管理后台改造"><a href="#2-管理后台改造" class="headerlink" title="2.管理后台改造"></a>2.管理后台改造</h3><ul>
+<li>（1）   添加pom依赖</li>
+<li>（2）   添加dubbo消费者配置</li>
+</ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 当前应用名称，用于注册中心计算应用间依赖关系，注意：消费者和提供者应用名不要一样 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:application</span> <span class="attr">name</span>=<span class="string">"模块名"</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 连接服务注册中心zookeeper ip为zookeeper所在服务器的ip地址--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:registry</span> <span class="attr">address</span>=<span class="string">"zookeeper://127.0.0.1:2181"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 扫描包  --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:annotation</span> <span class="attr">package</span>=<span class="string">"包地址"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>（3）   在Controller中使用dubbo提供的@Reference注解引用dubbo服务</p>
-<h3 id="3-企业申请"><a href="#3-企业申请" class="headerlink" title="3.企业申请"></a>3.企业申请</h3><p>（1）   导入示例工程export _portal_web</p>
-<p>（2）   添加dubbo配置</p>
+<ul>
+<li>（3）   在Controller中使用dubbo提供的@Reference注解引用dubbo服务</li>
+</ul>
+<br>
+
+<br>
+
+<h3 id="3-企业申请"><a href="#3-企业申请" class="headerlink" title="3.企业申请"></a>3.企业申请</h3><ul>
+<li>（1）   导入示例工程export _portal_web</li>
+<li>（2）   添加dubbo配置</li>
+</ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置 viewResolver--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mvc:annotation-driven</span>&gt;</span><span class="tag">&lt;/<span class="name">mvc:annotation-driven</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 当前应用名称，用于注册中心计算应用间依赖关系，注意：消费者和提供者应用名不要一样 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:application</span> <span class="attr">name</span>=<span class="string">"模块名"</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 连接服务注册中心zookeeper ip为zookeeper所在服务器的ip地址--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:registry</span> <span class="attr">address</span>=<span class="string">"zookeeper://127.0.0.1:2181"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 扫描包  --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:annotation</span> <span class="attr">package</span>=<span class="string">"包地址"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>（3）   控制器方法</p>
+<ul>
+<li>（3）   控制器方法</li>
+</ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplyController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Reference</span></span><br><span class="line">   <span class="keyword">private</span> CompanyService companyService;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@RequestMapping</span>(<span class="string">"/apply"</span>)</span><br><span class="line">   <span class="keyword">public</span> <span class="meta">@ResponseBody</span> <span class="function">String <span class="title">apply</span><span class="params">(Company company)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">company.setId(UUID.randomUUID().toString());</span><br><span class="line">         companyService.save(company);</span><br><span class="line">         <span class="keyword">return</span> <span class="string">"1"</span>;</span><br><span class="line">      &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">         e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">"2"</span>;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -384,7 +452,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Apache-Dubbo"><span class="toc-number">1.</span> <span class="toc-text">Apache Dubbo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#dubbo图解"><span class="toc-number">1.1.</span> <span class="toc-text">dubbo图解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务注册中心Zookeeper"><span class="toc-number">1.2.</span> <span class="toc-text">服务注册中心Zookeeper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dubbo快速入门"><span class="toc-number">1.3.</span> <span class="toc-text">Dubbo快速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务提供者开发"><span class="toc-number">1.3.1.</span> <span class="toc-text">服务提供者开发</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-创建maven工程（打包方式为war），在pom-xml文件中导入Spring和dubbo的依赖"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">1.创建maven工程（打包方式为war），在pom.xml文件中导入Spring和dubbo的依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-配置web-xml文件"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">2.配置web.xml文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-创建服务接口"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">3.创建服务接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-创建服务实现类"><span class="toc-number">1.3.1.4.</span> <span class="toc-text">4.创建服务实现类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-创建applicationContext-service-xml"><span class="toc-number">1.3.1.5.</span> <span class="toc-text">5.创建applicationContext-service.xml</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务消费者开发"><span class="toc-number">1.3.2.</span> <span class="toc-text">服务消费者开发</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-创建maven工程（打包方式为war）"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">1.创建maven工程（打包方式为war）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-配置web-xml文件-1"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">2.配置web.xml文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-将服务提供者工程中的HelloService接口复制到当前工程"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">3.将服务提供者工程中的HelloService接口复制到当前工程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-编写Controller"><span class="toc-number">1.3.2.4.</span> <span class="toc-text">4.编写Controller</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-创建applicationContext-web-xml"><span class="toc-number">1.3.2.5.</span> <span class="toc-text">5.创建applicationContext-web.xml</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题"><span class="toc-number">1.3.3.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#负载均衡"><span class="toc-number">1.3.4.</span> <span class="toc-text">负载均衡</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dubbo管理控制台"><span class="toc-number">1.4.</span> <span class="toc-text">Dubbo管理控制台</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#访问http-localhost-8080-dubbo-admin-2-6-0-，输入用户名-root-和密码-root"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">访问http://localhost:8080/dubbo-admin-2.6.0/，输入用户名(root)和密码(root)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-服务提供者开发"><span class="toc-number">1.4.1.</span> <span class="toc-text">1.服务提供者开发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-管理后台改造"><span class="toc-number">1.4.2.</span> <span class="toc-text">2.管理后台改造</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-企业申请"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.企业申请</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Dubbo"><span class="toc-number">1.</span> <span class="toc-text">Dubbo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、服务注册中心Zookeeper"><span class="toc-number">1.1.</span> <span class="toc-text">一、服务注册中心Zookeeper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、Dubbo快速入门"><span class="toc-number">1.2.</span> <span class="toc-text">二、Dubbo快速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-服务提供者开发"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.服务提供者开发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-服务消费者开发"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.服务消费者开发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-负载均衡"><span class="toc-number">1.2.3.</span> <span class="toc-text">3.负载均衡</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Dubbo管理控制台"><span class="toc-number">1.3.</span> <span class="toc-text">三、Dubbo管理控制台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、代码记录：修改原有方法实现分布式治理"><span class="toc-number">1.4.</span> <span class="toc-text">四、代码记录：修改原有方法实现分布式治理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-管理后台改造"><span class="toc-number">1.4.1.</span> <span class="toc-text">2.管理后台改造</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-企业申请"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.企业申请</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
