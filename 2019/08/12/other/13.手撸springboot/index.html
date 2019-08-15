@@ -6,19 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java基础 | 名为小博客</title>
+  <title>手撸SpringBoot | 名为小博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基础总结">
+  <meta name="description" content="手撸SpringBoot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java基础">
-<meta property="og:url" content="http://yoursite.com/2019/06/09/other/y.Java基础复习/index.html">
+<meta property="og:title" content="手撸SpringBoot">
+<meta property="og:url" content="http://yoursite.com/2019/08/12/other/13.手撸springboot/index.html">
 <meta property="og:site_name" content="名为小博客">
-<meta property="og:description" content="基础总结">
+<meta property="og:description" content="手撸SpringBoot">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-15T13:22:02.724Z">
+<meta property="og:image" content="http://yoursite.com/img/SpringBoot/2019%E5%B9%B48%E6%9C%8812%E6%97%A51.jpg">
+<meta property="og:updated_time" content="2019-08-12T06:06:48.469Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java基础">
-<meta name="twitter:description" content="基础总结">
+<meta name="twitter:title" content="手撸SpringBoot">
+<meta name="twitter:description" content="手撸SpringBoot">
+<meta name="twitter:image" content="http://yoursite.com/img/SpringBoot/2019%E5%B9%B48%E6%9C%8812%E6%97%A51.jpg">
   
     <link rel="alternative" href="/atom.xml" title="名为小博客" type="application/atom+xml">
   
@@ -157,20 +159,20 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-other/y.Java基础复习" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-other/13.手撸springboot" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Java基础
+      手撸SpringBoot
     </h1>
   
 
         
-        <a href="/2019/06/09/other/y.Java基础复习/" class="archive-article-date">
-  	<time datetime="2019-06-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-09</time>
+        <a href="/2019/08/12/other/13.手撸springboot/" class="archive-article-date">
+  	<time datetime="2019-08-11T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-12</time>
 </a>
         
       </header>
@@ -180,18 +182,22 @@ var _hmt = _hmt || [];
         <br>
 
 <blockquote>
-<p><strong>基础总结</strong></p>
+<p><strong>手撸SpringBoot</strong></p>
 </blockquote>
 <a id="more"></a>
 
 <br>
 
-<p><a href="/2019/06/08/other/a.面试总结/">1.总结</a></p>
-<p><a href="/2019/06/08/other/b.面试总结/">2.总结</a></p>
-<p><a href="/2019/06/09/other/c.面试总结/">3.总结</a></p>
-<p><a href="/2019/06/07/other/a.Java基础208题/">4.Java基础208题</a></p>
-<p><a href="/2019/08/11/other/d、2019年8月11日/">2019年8月11日刷题记录</a></p>
-<p><a href="/2019/08/15/other/f、2019年8月15日/">2019年8月15日刷题记录</a></p>
+<h1 id="1、实现代码启动Tomcat"><a href="#1、实现代码启动Tomcat" class="headerlink" title="1、实现代码启动Tomcat"></a>1、实现代码启动Tomcat</h1><h2 id="1-1、创建Maven项目"><a href="#1-1、创建Maven项目" class="headerlink" title="1.1、创建Maven项目"></a>1.1、创建Maven项目</h2><p><img src="/img/SpringBoot/2019%E5%B9%B48%E6%9C%8812%E6%97%A51.jpg" alt></p>
+<h2 id="1-2、导入依赖"><a href="#1-2、导入依赖" class="headerlink" title="1.2、导入依赖"></a>1.2、导入依赖</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--Java代码创建tomcat--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.tomcat.embed<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>tomcat-embed-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.5.39<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--spring web依赖--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.8.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--spring mvc依赖--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-webmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.8.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--对jsp的支持--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.tomcat<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>tomcat-jasper<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.5.16<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3、创建一个用于映射的Servlet"><a href="#1-3、创建一个用于映射的Servlet" class="headerlink" title="1.3、创建一个用于映射的Servlet"></a>1.3、创建一个用于映射的Servlet</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        doGet(req,resp);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        resp.getWriter().println(<span class="string">"&lt;h1&gt;123&lt;/h1&gt;"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4、创建Tomcat启动类"><a href="#1-4、创建Tomcat启动类" class="headerlink" title="1.4、创建Tomcat启动类"></a>1.4、创建Tomcat启动类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TomcatStart</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 启动端口与访问路径</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> PORT = <span class="number">80</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String CONTEXTPATH = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> LifecycleException </span>&#123;</span><br><span class="line">        Tomcat tomcat = <span class="keyword">new</span> Tomcat();</span><br><span class="line">        <span class="comment">//设置端口号</span></span><br><span class="line">        tomcat.setPort(PORT);</span><br><span class="line">        <span class="comment">//设置自动装配，默认关闭</span></span><br><span class="line">        tomcat.getHost().setAutoDeploy(<span class="keyword">false</span>);</span><br><span class="line">        <span class="comment">//创建context上下文</span></span><br><span class="line">        StandardContext standardContext = <span class="keyword">new</span> StandardContext();</span><br><span class="line">        standardContext.setPath(CONTEXTPATH);</span><br><span class="line">        <span class="comment">//创建监听器</span></span><br><span class="line">        standardContext.addLifecycleListener(<span class="keyword">new</span> Tomcat.FixContextListener());</span><br><span class="line">        <span class="comment">//tomcat中注册上下文</span></span><br><span class="line">        tomcat.getHost().addChild(standardContext);</span><br><span class="line">        <span class="comment">//创建servlet</span></span><br><span class="line">        tomcat.addServlet(CONTEXTPATH,<span class="string">"IndexServlet"</span>,<span class="keyword">new</span> IndexServlet());</span><br><span class="line">        <span class="comment">//添加servlet映射</span></span><br><span class="line">        standardContext.addServletMappingDecoded(<span class="string">"/"</span>,<span class="string">"IndexServlet"</span>);</span><br><span class="line">        <span class="comment">//启动</span></span><br><span class="line">        tomcat.start();</span><br><span class="line">        System.out.println(<span class="string">"启动成功"</span>);</span><br><span class="line">        tomcat.getServer().await();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>启动tomcat启动类即可</strong></p>
+</blockquote>
 
       
 
@@ -213,18 +219,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2019/06/12/other/1.SpringShiro/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/08/15/other/f、2019年8月15日/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          SpringShiro
+          2019年8月15日的一些题
         
       </div>
     </a>
   
   
-    <a href="/2019/06/09/other/c.面试总结/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">3.总结</div>
+    <a href="/2019/08/11/other/d、2019年8月11日/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2019年8月11日的一些题</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -251,7 +257,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1、实现代码启动Tomcat"><span class="toc-number">1.</span> <span class="toc-text">1、实现代码启动Tomcat</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1、创建Maven项目"><span class="toc-number">1.1.</span> <span class="toc-text">1.1、创建Maven项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2、导入依赖"><span class="toc-number">1.2.</span> <span class="toc-text">1.2、导入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3、创建一个用于映射的Servlet"><span class="toc-number">1.3.</span> <span class="toc-text">1.3、创建一个用于映射的Servlet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4、创建Tomcat启动类"><span class="toc-number">1.4.</span> <span class="toc-text">1.4、创建Tomcat启动类</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>

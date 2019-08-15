@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java基础 | 名为小博客</title>
+  <title>2019年8月15日的一些题 | 名为小博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基础总结">
+  <meta name="description" content="2019年8月11日刷题记录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java基础">
-<meta property="og:url" content="http://yoursite.com/2019/06/09/other/y.Java基础复习/index.html">
+<meta property="og:title" content="2019年8月15日的一些题">
+<meta property="og:url" content="http://yoursite.com/2019/08/15/other/f、2019年8月15日/index.html">
 <meta property="og:site_name" content="名为小博客">
-<meta property="og:description" content="基础总结">
+<meta property="og:description" content="2019年8月11日刷题记录">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-15T13:22:02.724Z">
+<meta property="og:updated_time" content="2019-08-15T12:25:23.406Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java基础">
-<meta name="twitter:description" content="基础总结">
+<meta name="twitter:title" content="2019年8月15日的一些题">
+<meta name="twitter:description" content="2019年8月11日刷题记录">
   
     <link rel="alternative" href="/atom.xml" title="名为小博客" type="application/atom+xml">
   
@@ -157,20 +157,20 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-other/y.Java基础复习" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-other/f、2019年8月15日" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Java基础
+      2019年8月15日的一些题
     </h1>
   
 
         
-        <a href="/2019/06/09/other/y.Java基础复习/" class="archive-article-date">
-  	<time datetime="2019-06-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-09</time>
+        <a href="/2019/08/15/other/f、2019年8月15日/" class="archive-article-date">
+  	<time datetime="2019-08-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-15</time>
 </a>
         
       </header>
@@ -180,18 +180,54 @@ var _hmt = _hmt || [];
         <br>
 
 <blockquote>
-<p><strong>基础总结</strong></p>
+<p><strong>2019年8月11日刷题记录</strong></p>
 </blockquote>
 <a id="more"></a>
 
 <br>
 
-<p><a href="/2019/06/08/other/a.面试总结/">1.总结</a></p>
-<p><a href="/2019/06/08/other/b.面试总结/">2.总结</a></p>
-<p><a href="/2019/06/09/other/c.面试总结/">3.总结</a></p>
-<p><a href="/2019/06/07/other/a.Java基础208题/">4.Java基础208题</a></p>
-<p><a href="/2019/08/11/other/d、2019年8月11日/">2019年8月11日刷题记录</a></p>
-<p><a href="/2019/08/15/other/f、2019年8月15日/">2019年8月15日刷题记录</a></p>
+<h1 id="1、String不变性"><a href="#1、String不变性" class="headerlink" title="1、String不变性"></a>1、String不变性</h1><p><strong>abc+=是重新创建了一个地址，如果不重新指定abc的地址引用，输出结果一直都是1</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span></span>&#123;</span><br><span class="line">    String abc = <span class="keyword">new</span> String(<span class="string">"1"</span>);</span><br><span class="line">    abc = string1(abc);</span><br><span class="line">    System.out.println(abc);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">string1</span><span class="params">(String abc)</span> </span>&#123;</span><br><span class="line">    abc += <span class="string">"2"</span>;</span><br><span class="line">    <span class="keyword">return</span> abc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="2、try、catch运行顺序"><a href="#2、try、catch运行顺序" class="headerlink" title="2、try、catch运行顺序"></a>2、try、catch运行顺序</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String abc = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    testTry(<span class="number">0</span>);</span><br><span class="line">    testTry(<span class="number">1</span>);</span><br><span class="line">    System.out.println(abc);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">testTry</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"123"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        abc += <span class="string">"1"</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        abc += <span class="string">"2"</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        abc += <span class="string">"3"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    abc += <span class="string">"4"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="3、Jsp内置对象，同一应用中页面间传值有哪些方式"><a href="#3、Jsp内置对象，同一应用中页面间传值有哪些方式" class="headerlink" title="3、Jsp内置对象，同一应用中页面间传值有哪些方式"></a>3、Jsp内置对象，同一应用中页面间传值有哪些方式</h2><ul>
+<li>Application</li>
+<li>Session</li>
+<li>Request</li>
+<li>PageContext</li>
+</ul>
+<br>
+
+<h2 id="4、Jsp中如何使用Javabeans，如何使用一个已经定义好的类"><a href="#4、Jsp中如何使用Javabeans，如何使用一个已经定义好的类" class="headerlink" title="4、Jsp中如何使用Javabeans，如何使用一个已经定义好的类"></a>4、Jsp中如何使用Javabeans，如何使用一个已经定义好的类</h2><ul>
+<li>Jsp getProperty name=”JavaBean实例名” property=”属性名”</li>
+</ul>
+<br>
+
+<h2 id="5、Jsp如何获得Html-Form中的数据"><a href="#5、Jsp如何获得Html-Form中的数据" class="headerlink" title="5、Jsp如何获得Html Form中的数据"></a>5、Jsp如何获得Html Form中的数据</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"a.jsp"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"test_data"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;% String testData = request.getParameter(<span class="string">"test_data"</span>);   <span class="comment">// 即可获得test_data的值。%&gt;</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="6、Java递归计算斐波那契数列"><a href="#6、Java递归计算斐波那契数列" class="headerlink" title="6、Java递归计算斐波那契数列"></a>6、Java递归计算斐波那契数列</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 斐波那契数列（Fibonacci sequence）</span></span><br><span class="line"><span class="comment"> * 又称黄金分割数列、因数学家列昂纳多·斐波那契（Leonardoda Fibonacci）以兔子繁殖为例子而引入，故又称为“兔子数列”</span></span><br><span class="line"><span class="comment"> * 指的是这样一个数列：1、1、2、3、5、8、13、21、34、……</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fibonacciSequence</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//数列：1，1，2，3，5，8 ......</span></span><br><span class="line">    System.out.print( f(<span class="number">11</span>) );<span class="comment">//输出数列的第几位</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>( n == <span class="number">1</span> || n == <span class="number">2</span> )</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> f( n - <span class="number">1</span> )+f( n - <span class="number">2</span> );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="7、数据库的主键外键和索引"><a href="#7、数据库的主键外键和索引" class="headerlink" title="7、数据库的主键外键和索引"></a>7、数据库的主键外键和索引</h2><ul>
+<li>主键：保证数据的唯一性，能够唯一的标识一组数据的数据元素。</li>
+<li>外键：保证数据的完整性，外键是另外一张表的主键。</li>
+<li>索引：保证数据的唯一性，加速数据的检索数据。</li>
+</ul>
+<br>
+
+<h2 id="8、事务"><a href="#8、事务" class="headerlink" title="8、事务"></a>8、事务</h2><ul>
+<li>原子性，一致性，隔离性，持久性</li>
+</ul>
 
       
 
@@ -213,18 +249,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2019/06/12/other/1.SpringShiro/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          SpringShiro
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/09/other/c.面试总结/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">3.总结</div>
+    <a href="/2019/08/12/other/13.手撸springboot/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">手撸SpringBoot</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -251,7 +278,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1、String不变性"><span class="toc-number">1.</span> <span class="toc-text">1、String不变性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2、try、catch运行顺序"><span class="toc-number">1.1.</span> <span class="toc-text">2、try、catch运行顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、Jsp内置对象，同一应用中页面间传值有哪些方式"><span class="toc-number">1.2.</span> <span class="toc-text">3、Jsp内置对象，同一应用中页面间传值有哪些方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、Jsp中如何使用Javabeans，如何使用一个已经定义好的类"><span class="toc-number">1.3.</span> <span class="toc-text">4、Jsp中如何使用Javabeans，如何使用一个已经定义好的类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、Jsp如何获得Html-Form中的数据"><span class="toc-number">1.4.</span> <span class="toc-text">5、Jsp如何获得Html Form中的数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、Java递归计算斐波那契数列"><span class="toc-number">1.5.</span> <span class="toc-text">6、Java递归计算斐波那契数列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7、数据库的主键外键和索引"><span class="toc-number">1.6.</span> <span class="toc-text">7、数据库的主键外键和索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8、事务"><span class="toc-number">1.7.</span> <span class="toc-text">8、事务</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
