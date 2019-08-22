@@ -16,7 +16,7 @@
 <meta property="og:description" content="MyBatis面试题">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/img/%E5%A4%9A%E8%A1%A8/Snipaste_2019-06-30_23-38-06.jpg">
-<meta property="og:updated_time" content="2019-08-22T09:40:41.785Z">
+<meta property="og:updated_time" content="2019-08-22T11:13:32.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1、MyBatis面试题">
 <meta name="twitter:description" content="MyBatis面试题">
@@ -186,10 +186,23 @@ var _hmt = _hmt || [];
 
 <br>
 
+<h1 id="Mybatis中-与-的区别，哪个能防止SQL注入？"><a href="#Mybatis中-与-的区别，哪个能防止SQL注入？" class="headerlink" title="Mybatis中$与#的区别，哪个能防止SQL注入？"></a>Mybatis中$与#的区别，哪个能防止SQL注入？</h1><p>   “#” 会将传入数据当成一个字符串自动加上双引号</p>
+<p>   “$” 直接生成SQL语句</p>
+<p>   “#” 防止SQL注入</p>
+<br>
+
 <h1 id="数据库的主键外键和索引"><a href="#数据库的主键外键和索引" class="headerlink" title="数据库的主键外键和索引"></a>数据库的主键外键和索引</h1><ul>
 <li>主键：保证数据的唯一性，能够唯一的标识一组数据的数据元素。</li>
 <li>外键：保证数据的完整性，外键是另外一张表的主键。</li>
 <li>索引：保证数据的唯一性，加速数据的检索数据。</li>
+</ul>
+<br>
+
+<h1 id="MySQl服务占用cpu100-，如何排查问题？"><a href="#MySQl服务占用cpu100-，如何排查问题？" class="headerlink" title="MySQl服务占用cpu100%，如何排查问题？"></a>MySQl服务占用cpu100%，如何排查问题？</h1><ul>
+<li>1.使用top命令先简单查看服务器情况</li>
+<li>2.在mysql上执行show full processlist</li>
+<li>3.修改配置文件，将mysql配置文件中的pool/buffer修改一下试试（视情况而定）</li>
+<li>4.排查SQL缩减查询范围</li>
 </ul>
 <br>
 
@@ -380,7 +393,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库的主键外键和索引"><span class="toc-number">1.</span> <span class="toc-text">数据库的主键外键和索引</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库左右外连接的区别"><span class="toc-number">2.</span> <span class="toc-text">数据库左右外连接的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#怎么优化SQL"><span class="toc-number">3.</span> <span class="toc-text">怎么优化SQL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#库表的设计方式"><span class="toc-number">4.</span> <span class="toc-text">库表的设计方式</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Mybatis中-与-的区别，哪个能防止SQL注入？"><span class="toc-number">1.</span> <span class="toc-text">Mybatis中$与#的区别，哪个能防止SQL注入？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库的主键外键和索引"><span class="toc-number">2.</span> <span class="toc-text">数据库的主键外键和索引</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQl服务占用cpu100-，如何排查问题？"><span class="toc-number">3.</span> <span class="toc-text">MySQl服务占用cpu100%，如何排查问题？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库左右外连接的区别"><span class="toc-number">4.</span> <span class="toc-text">数据库左右外连接的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#怎么优化SQL"><span class="toc-number">5.</span> <span class="toc-text">怎么优化SQL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#库表的设计方式"><span class="toc-number">6.</span> <span class="toc-text">库表的设计方式</span></a></li></ol>
                     </div>
                 </span>
             </div>
