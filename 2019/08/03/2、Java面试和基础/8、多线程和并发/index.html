@@ -16,7 +16,7 @@
 <meta property="og:description" content="多线程和并发面试题">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/img/%E5%B9%B6%E5%8F%91/binfa1.png">
-<meta property="og:updated_time" content="2019-08-22T10:05:16.112Z">
+<meta property="og:updated_time" content="2019-08-27T02:39:20.440Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1、多线程和并发">
 <meta name="twitter:description" content="多线程和并发面试题">
@@ -186,6 +186,20 @@ var _hmt = _hmt || [];
 
 <br>
 
+<h1 id="Java线程池"><a href="#Java线程池" class="headerlink" title="Java线程池"></a>Java线程池</h1><h2 id="创建方式"><a href="#创建方式" class="headerlink" title="创建方式"></a>创建方式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 线程池创建</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test18</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//创建实现runnable的类</span></span><br><span class="line">    TestDataDemo testDataDemo = <span class="keyword">new</span> TestDataDemo();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取线程池</span></span><br><span class="line">    ExecutorService threadPool1 = Executors.newFixedThreadPool(<span class="number">5</span>);</span><br><span class="line">    <span class="comment">//执行</span></span><br><span class="line">    threadPool1.submit(testDataDemo);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据ThreadPoolExecutor构造方法构建线程池</span></span><br><span class="line">    ThreadPoolExecutor threadPool2 =</span><br><span class="line">        <span class="keyword">new</span> ThreadPoolExecutor(</span><br><span class="line">        <span class="number">5</span>,</span><br><span class="line">        <span class="number">10</span>,</span><br><span class="line">        <span class="number">50</span>,</span><br><span class="line">        TimeUnit.SECONDS,</span><br><span class="line">        <span class="keyword">new</span> ArrayBlockingQueue&lt;&gt;(<span class="number">1</span>));</span><br><span class="line">    <span class="comment">//执行</span></span><br><span class="line">    threadPool2.execute(testDataDemo);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h2><ul>
+<li><strong>新建（NEW）：</strong> 刚刚创建出来的线程对象处于此状态</li>
+<li><strong>运行（RUNNABLE）：</strong> 正在运行的线程处于此状态。（调用start方法后会变成运行）</li>
+<li><strong>受阻塞（BLOCKED）：</strong>等待获取锁的线程处于此状态。</li>
+<li><strong>无限等待（WAITING）：</strong> 当调用了wait()方法后，线程会变成无限等待。</li>
+<li><strong>计时等待（TIMED_WAITING）：</strong> 当调用sleep(毫秒值)，wait(毫秒值)方法后会进入到计时等待</li>
+<li><strong>退出（TERMINATED）：</strong> 当线程的run方法执行完了，或者调用了线程的stop方法，线程会变成退出状态。</li>
+</ul>
+<br>
+
 <h1 id="volatile作用"><a href="#volatile作用" class="headerlink" title="volatile作用"></a>volatile作用</h1><ul>
 <li>内存可见性：所有线程都能看到共享内存的最新状态</li>
 <li>防止指令重排</li>
@@ -304,18 +318,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2019/08/22/3、杂七杂八的东西/B、总结/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/08/03/2、Java面试和基础/10、dubbo/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          一些总结
+          1、dubbo和zookeeper
         
       </div>
     </a>
   
   
-    <a href="/2019/08/03/2、Java面试和基础/11、其他总结/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">1、杂七杂八面试题</div>
+    <a href="/2019/08/03/2、Java面试和基础/9、Jvm/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">1、Jvm</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -342,7 +356,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#volatile作用"><span class="toc-number">1.</span> <span class="toc-text">volatile作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#极高并发下HashTable和ConcurrentHashMap的选择"><span class="toc-number">2.</span> <span class="toc-text">极高并发下HashTable和ConcurrentHashMap的选择</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分布式锁"><span class="toc-number">3.</span> <span class="toc-text">分布式锁</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分布式Session"><span class="toc-number">4.</span> <span class="toc-text">分布式Session</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#创建一个线程"><span class="toc-number">5.</span> <span class="toc-text">创建一个线程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java并发编程中要保证的几个原则"><span class="toc-number">6.</span> <span class="toc-text">Java并发编程中要保证的几个原则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#缓存的雪崩-穿透-击穿"><span class="toc-number">7.</span> <span class="toc-text">缓存的雪崩,穿透,击穿</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存的穿透"><span class="toc-number">7.1.</span> <span class="toc-text">缓存的穿透</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存的雪崩"><span class="toc-number">7.2.</span> <span class="toc-text">缓存的雪崩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存的穿透-1"><span class="toc-number">7.3.</span> <span class="toc-text">缓存的穿透</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线程安全"><span class="toc-number">8.</span> <span class="toc-text">线程安全</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java线程池"><span class="toc-number">1.</span> <span class="toc-text">Java线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建方式"><span class="toc-number">1.1.</span> <span class="toc-text">创建方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程状态"><span class="toc-number">1.2.</span> <span class="toc-text">线程状态</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#volatile作用"><span class="toc-number">2.</span> <span class="toc-text">volatile作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#极高并发下HashTable和ConcurrentHashMap的选择"><span class="toc-number">3.</span> <span class="toc-text">极高并发下HashTable和ConcurrentHashMap的选择</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分布式锁"><span class="toc-number">4.</span> <span class="toc-text">分布式锁</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分布式Session"><span class="toc-number">5.</span> <span class="toc-text">分布式Session</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#创建一个线程"><span class="toc-number">6.</span> <span class="toc-text">创建一个线程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java并发编程中要保证的几个原则"><span class="toc-number">7.</span> <span class="toc-text">Java并发编程中要保证的几个原则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#缓存的雪崩-穿透-击穿"><span class="toc-number">8.</span> <span class="toc-text">缓存的雪崩,穿透,击穿</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存的穿透"><span class="toc-number">8.1.</span> <span class="toc-text">缓存的穿透</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存的雪崩"><span class="toc-number">8.2.</span> <span class="toc-text">缓存的雪崩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存的穿透-1"><span class="toc-number">8.3.</span> <span class="toc-text">缓存的穿透</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线程安全"><span class="toc-number">9.</span> <span class="toc-text">线程安全</span></a></li></ol>
                     </div>
                 </span>
             </div>

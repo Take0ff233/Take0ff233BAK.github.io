@@ -6,19 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>一些总结 | 名为小博客</title>
+  <title>1、MyBatis面试题 | 名为小博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="总结">
+  <meta name="description" content="MyBatis面试题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一些总结">
-<meta property="og:url" content="http://yoursite.com/2019/08/22/3、杂七杂八的东西/B、总结/index.html">
+<meta property="og:title" content="1、MyBatis面试题">
+<meta property="og:url" content="http://yoursite.com/2019/08/03/2、Java面试和基础/5、databaseMybatis/index.html">
 <meta property="og:site_name" content="名为小博客">
-<meta property="og:description" content="总结">
+<meta property="og:description" content="MyBatis面试题">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-26T13:05:58.354Z">
+<meta property="og:image" content="http://yoursite.com/img/%E5%A4%9A%E8%A1%A8/Snipaste_2019-06-30_23-38-06.jpg">
+<meta property="og:updated_time" content="2019-08-22T11:13:32.036Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一些总结">
-<meta name="twitter:description" content="总结">
+<meta name="twitter:title" content="1、MyBatis面试题">
+<meta name="twitter:description" content="MyBatis面试题">
+<meta name="twitter:image" content="http://yoursite.com/img/%E5%A4%9A%E8%A1%A8/Snipaste_2019-06-30_23-38-06.jpg">
   
     <link rel="alternative" href="/atom.xml" title="名为小博客" type="application/atom+xml">
   
@@ -157,65 +159,182 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-3、杂七杂八的东西/B、总结" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2、Java面试和基础/5、databaseMybatis" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      一些总结
+      1、MyBatis面试题
     </h1>
   
 
         
-        <a href="/2019/08/22/3、杂七杂八的东西/B、总结/" class="archive-article-date">
-  	<time datetime="2019-08-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-22</time>
+        <a href="/2019/08/03/2、Java面试和基础/5、databaseMybatis/" class="archive-article-date">
+  	<time datetime="2019-08-02T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <br>
-
-<blockquote>
-<p><strong>总结</strong></p>
-</blockquote>
+        <ul>
+<li>MyBatis面试题</li>
+</ul>
 <a id="more"></a>
 
 <br>
 
-<h1 id="Java线程池"><a href="#Java线程池" class="headerlink" title="Java线程池"></a>Java线程池</h1><h2 id="创建方式"><a href="#创建方式" class="headerlink" title="创建方式"></a>创建方式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 线程池创建</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test18</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//创建实现runnable的类</span></span><br><span class="line">    TestDataDemo testDataDemo = <span class="keyword">new</span> TestDataDemo();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取线程池</span></span><br><span class="line">    ExecutorService threadPool1 = Executors.newFixedThreadPool(<span class="number">5</span>);</span><br><span class="line">    <span class="comment">//执行</span></span><br><span class="line">    threadPool1.submit(testDataDemo);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据ThreadPoolExecutor构造方法构建线程池</span></span><br><span class="line">    ThreadPoolExecutor threadPool2 =</span><br><span class="line">        <span class="keyword">new</span> ThreadPoolExecutor(</span><br><span class="line">        <span class="number">5</span>,</span><br><span class="line">        <span class="number">10</span>,</span><br><span class="line">        <span class="number">50</span>,</span><br><span class="line">        TimeUnit.SECONDS,</span><br><span class="line">        <span class="keyword">new</span> ArrayBlockingQueue&lt;&gt;(<span class="number">1</span>));</span><br><span class="line">    <span class="comment">//执行</span></span><br><span class="line">    threadPool2.execute(testDataDemo);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Mybatis中-与-的区别，哪个能防止SQL注入？"><a href="#Mybatis中-与-的区别，哪个能防止SQL注入？" class="headerlink" title="Mybatis中$与#的区别，哪个能防止SQL注入？"></a>Mybatis中$与#的区别，哪个能防止SQL注入？</h1><p>   “#” 会将传入数据当成一个字符串自动加上双引号</p>
+<p>   “$” 直接生成SQL语句</p>
+<p>   “#” 防止SQL注入</p>
+<br>
 
-<h2 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h2><ul>
-<li><strong>新建（NEW）：</strong> 刚刚创建出来的线程对象处于此状态</li>
-<li><strong>运行（RUNNABLE）：</strong> 正在运行的线程处于此状态。（调用start方法后会变成运行）</li>
-<li><strong>受阻塞（BLOCKED）：</strong>等待获取锁的线程处于此状态。</li>
-<li><strong>无限等待（WAITING）：</strong> 当调用了wait()方法后，线程会变成无限等待。</li>
-<li><strong>计时等待（TIMED_WAITING）：</strong> 当调用sleep(毫秒值)，wait(毫秒值)方法后会进入到计时等待</li>
-<li><strong>退出（TERMINATED）：</strong> 当线程的run方法执行完了，或者调用了线程的stop方法，线程会变成退出状态。</li>
+<h1 id="数据库的主键外键和索引"><a href="#数据库的主键外键和索引" class="headerlink" title="数据库的主键外键和索引"></a>数据库的主键外键和索引</h1><ul>
+<li>主键：保证数据的唯一性，能够唯一的标识一组数据的数据元素。</li>
+<li>外键：保证数据的完整性，外键是另外一张表的主键。</li>
+<li>索引：保证数据的唯一性，加速数据的检索数据。</li>
 </ul>
-<h1 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h1><h2 id="如何避免消息丢失"><a href="#如何避免消息丢失" class="headerlink" title="如何避免消息丢失"></a>如何避免消息丢失</h2><ul>
-<li>ACK</li>
-<li>持久化<ul>
-<li>交换机持久</li>
-<li>路由持久</li>
-<li>队列持久</li>
-</ul>
-</li>
-<li>生产者确认</li>
-<li>消息事务</li>
-<li>可靠消息服务</li>
-</ul>
-<h2 id="消息重复消费"><a href="#消息重复消费" class="headerlink" title="消息重复消费"></a>消息重复消费</h2><ul>
-<li>保证消息唯一性，保证消息幂等性</li>
-<li>添加消费标识</li>
-</ul>
-<h1 id="HashMap解决Hash冲突"><a href="#HashMap解决Hash冲突" class="headerlink" title="HashMap解决Hash冲突"></a>HashMap解决Hash冲突</h1><ul>
-<li>链地址法</li>
-</ul>
+<br>
 
+<h1 id="MySQl服务占用cpu100-，如何排查问题？"><a href="#MySQl服务占用cpu100-，如何排查问题？" class="headerlink" title="MySQl服务占用cpu100%，如何排查问题？"></a>MySQl服务占用cpu100%，如何排查问题？</h1><ul>
+<li>1.使用top命令先简单查看服务器情况</li>
+<li>2.在mysql上执行show full processlist</li>
+<li>3.修改配置文件，将mysql配置文件中的pool/buffer修改一下试试（视情况而定）</li>
+<li>4.排查SQL缩减查询范围</li>
+</ul>
+<br>
+
+<h1 id="数据库左右外连接的区别"><a href="#数据库左右外连接的区别" class="headerlink" title="数据库左右外连接的区别"></a>数据库左右外连接的区别</h1><blockquote>
+<p><strong>内连接：</strong>指连接结果仅包含符合连接条件的行，参与连接的两个表都应该符合连接条件。</p>
+</blockquote>
+<blockquote>
+<p><strong>外连接：</strong>连接结果不仅包含符合连接条件的行同时也包含自身不符合条件的行。包括左外连接、右外连接和全外连接。</p>
+<p>　　左外连接：左边表数据行全部保留，右边表保留符合连接条件的行。</p>
+<p>　　右外连接：右边表数据行全部保留，左边表保留符合连接条件的行。</p>
+<p>　　全外连接：左外连接 union 右外连接。</p>
+</blockquote>
+<p><img src="/img/%E5%A4%9A%E8%A1%A8/Snipaste_2019-06-30_23-38-06.jpg" alt></p>
+<blockquote>
+<p><strong>A表 　　　B表</strong></p>
+<p>id name　id name</p>
+<p>1 a　　　1 b</p>
+<p>2 b　　　3 c</p>
+<p>4 c</p>
+<br>
+
+<p><strong>内连接</strong></p>
+<p>　　1a　1b</p>
+<br>
+
+<p><strong>左外连接就是以左表为准，去匹配右表，左表有多少条数据，结果就是多少条数据</strong><br>　　select * from A left join B on A.id=B.id</p>
+<p>　　　id name id name</p>
+<p>　　　1 a 1 b</p>
+<p>　　　2 b null null</p>
+<p>　　　4 c null null</p>
+<br>
+
+<p><strong>右外连接就是与左外连接反之，以右表为准，去匹配左表，右表有多少条数据，结果就是多少条数据</strong></p>
+<p>　　select * from A right join B on A.id=B.id</p>
+<p>　　　id name id name</p>
+<p>　　　1 a 1 b</p>
+<p>　　　null null 3 c</p>
+<br>
+
+<p><strong>全外连接数据条数不一定，相当与是左外连接 和右外连接 的综合</strong></p>
+<p>　　select * from A full join B on A.id=B.id</p>
+<p>　　　id name id name</p>
+<p>　　　1 a 1 b</p>
+<p>　　　2 b null null</p>
+<p>　　　null null 3 c</p>
+<p>　　　4 c null null</p>
+</blockquote>
+<br>
+
+<h1 id="怎么优化SQL"><a href="#怎么优化SQL" class="headerlink" title="怎么优化SQL"></a>怎么优化SQL</h1><ul>
+<li>对查询进行优化，要尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引</li>
+<li>尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描</li>
+<li>尽量避免在 where 子句中使用 != 或 &lt;&gt; 操作符，否则将引擎放弃使用索引而进行全表扫描</li>
+<li>尽量避免在 where 子句中使用 or 来连接条件，如果一个字段有索引，一个字段没有索引，将导致引擎放弃使用索引而进行全表扫描</li>
+<li>in 和 not in 也要慎用，否则会导致全表扫描，对于连续的数值，能用 between 就不要用 in 了</li>
+<li>如果在 where 子句中使用参数，也会导致全表扫描</li>
+<li>尽量避免在where子句中对字段进行函数操作，这将导致引擎放弃使用索引而进行全表扫描</li>
+<li>不要在 where 子句中的“=”左边进行函数、算术运算或其他表达式运算，否则系统将可能无法正确使用索引</li>
+<li>在使用索引字段作为条件时，如该索引是复合索引，那么必须使用到该索引中的第一个字段作为条件时才能保证系统使用该索引，否则索引将不会被使用，并且应尽可能的让字段顺序与索引顺序相一致。</li>
+<li>不要写一些没有意义的查询。</li>
+<li>Update 语句，如果只更改1、2个字段，不要Update全部字段，否则频繁调用会引起明显的性能消耗，同时带来大量日志</li>
+<li>对于多张大数据量（这里几百条就算大了）的表JOIN，要先分页再JOIN，否则逻辑读会很高，性能很差</li>
+<li>select count(*) from table，这样不带任何条件的count会引起全表扫描，并且没有任何业务意义，是一定要杜绝的</li>
+<li>insert 或 update 时有可能会重建索引，所以怎样建索引需要慎重考虑，视具体情况而定。一个表的索引数最好不要超过6个，若太多则应考虑一些不常使用到的列上建的索引是否有必要</li>
+<li>应尽可能的避免更新 clustered 索引数据列，clustered 索引数据列的顺序就是表记录的物理存储顺序，一旦该列值改变将导致整个表记录的顺序的调整</li>
+<li>尽量使用数字型字段，若只含数值信息的字段尽量不要设计为字符型，这会降低查询和连接的性能，并会增加存储开销。</li>
+<li>尽可能的使用 varchar/nvarchar 代替 char/nchar ，因为首先变长字段存储空间小，可以节省存储空间，其次对于查询来说，在一个相对较小的字段内搜索效率显然要高些</li>
+<li>任何地方都不要使用 select * from t ，用具体的字段列表代替 “*”，不要返回用不到的任何字段</li>
+<li>尽量使用表变量来代替临时表。如果表变量包含大量数据，请注意索引非常有限（只有主键索引）</li>
+<li>避免频繁创建和删除临时表，以减少系统表资源的消耗</li>
+<li>在新建临时表时，如果一次性插入数据量很大，那么可以使用 select into 代替 create table，避免造成大量 log </li>
+<li>如果使用到了临时表，在存储过程的最后务必将所有的临时表显式删除，先 truncate table ，然后 drop table ，这样可以避免系统表的较长时间锁定</li>
+<li>尽量避免使用游标，因为游标的效率较差，如果游标操作的数据超过1万行，那么就应该考虑改写</li>
+<li>使用基于游标的方法或临时表方法之前，应先寻找基于集的解决方案来解决问题，基于集的方法通常更有效</li>
+<li>在所有的存储过程和触发器的开始处设置 SET NOCOUNT ON ，在结束时设置 SET NOCOUNT OFF 。无需在执行存储过程和触发器的每个语句后向客户端发送 DONE_IN_PROC 消息</li>
+<li>尽量避免大事务操作，提高系统并发能力</li>
+<li>尽量避免向客户端返回大数据量，若数据量过大，应该考虑相应需求是否合理。</li>
+<li><a href="https://www.cnblogs.com/yunfeifei/p/3850440.html" target="_blank" rel="noopener">帖子源地址</a></li>
+<li><a href="https://www.cnblogs.com/xuecanmeng/p/5489869.html" target="_blank" rel="noopener">帖子源地址2</a></li>
+</ul>
+<br>
+
+<h1 id="库表的设计方式"><a href="#库表的设计方式" class="headerlink" title="库表的设计方式"></a>库表的设计方式</h1><p><code>时间与空间的取舍,数据需要度分析管理</code></p>
+<blockquote>
+<p><strong>1.不应该针对整个系统进行数据库设计，而应该根据系统架构中的组件划分，针对每个组件所处理的业务进行组件单元的数据库设计；不同组件间所对应的数据库表之间的关联应尽可能减少，如果不同组件间的表需要外键关联也尽量不要创建外键关联，而只是记录关联表的一个主键，确保组件对应的表之间的独立性，为系统或表结构的重构提供可能性。</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>2.采用领域模型驱动的方式和自顶向下的思路进行数据库设计，首先分析系统业务，根据职责定义对象。对象要符合封装的特性，确保与职责相关的数据项被定义在一个对象之内，这些数据项能够完整描述该职责，不会出现职责描述缺失。并且一个对象有且只有一项职责，如果一个对象要负责两个或两个以上的职责，应进行分拆。</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>3.根据建立的领域模型进行数据库表的映射，此时应参考数据库设计第二范式：一个表中的所有非关键字属性都依赖于整个关键字。关键字可以是一个属性，也可以是多个属性的集合，不论那种方式，都应确保关键字能够保证唯一性。在确定关键字时，应保证关键字不会参与业务且不会出现更新异常，这时，最优解决方案为采用一个自增数值型属性或一个随机字符串作为表的关键字。</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>4.由于第一点所述的领域模型驱动的方式设计数据库表结构，领域模型中的每一个对象只有一项职责，所以对象中的数据项不存在传递依赖，所以，这种思路的数据库表结构设计从一开始即满足第三范式：一个表应满足第二范式，且属性间不存在传递依赖。</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>5.同样，由于对象职责的单一性以及对象之间的关系反映的是业务逻辑之间的关系，所以在领域模型中的对象存在主对象和从对象之分，从对象是从1－N或N－N的角度进一步完善主对象的业务逻辑，所以从对象及对象关系映射为的表及表关联关系不存在删除和插入异常。</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>6.在映射后得出的数据库表结构中，应再根据第四范式进行进一步修改，确保不存在多值依赖。这时，应根据反向工程的思路反馈给领域模型。如果表结构中存在多值依赖，则证明领域模型中的对象具有至少两个以上的职责，应根据第一条进行设计修正。第四范式：一个表如果满足BCNF，不应存在多值依赖。</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>7.在经过分析后确认所有的表都满足二、三、四范式的情况下，表和表之间的关联尽量采用弱关联以便于对表字段和表结构的调整和重构。并且，我认为数据库中的表是用来持久化一个对象实例在特定时间及特定条件下的状态的，只是一个存储介质，所以，表和表之间也不应用强关联来表述业务（数据间的一致性），这一职责应由系统的逻辑层来保证，这种方式也确保了系统对于不正确数据（脏数据）的兼容性。当然，从整个系统的角度来说我们还是要尽最大努力确保系统不会产生脏数据，单从另一个角度来说，脏数据的产生在一定程度上也是不可避免的，我们也要保证系统对这种情况的容错性。这是一个折中的方案。</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>8.应针对所有表的主键和外键建立索引，有针对性的（针对一些大数据量和常用检索方式）建立组合属性的索引，提高检索效率。虽然建立索引会消耗部分系统资源，但比较起在检索时搜索整张表中的数据尤其时表中的数据量较大时所带来的性能影响，以及无索引时的排序操作所带来的性能影响，这种方式仍然是值得提倡的。</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>9.尽量少采用存储过程，目前已经有很多技术可以替代存储过程的功能如”对象/关系映射”等，将数据一致性的保证放在数据库中，无论对于版本控制、开发和部署、以及数据库的迁移都会带来很大的影响。但不可否认，存储过程具有性能上的优势，所以，当系统可使用的硬件不会得到提升而性能又是非常重要的质量属性时，可经过平衡考虑选用存储过程。</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>10.当处理表间的关联约束所付出的代价（常常是使用性上的代价）超过了保证不会出现修改、删除、更改异常所付出的代价，并且数据冗余也不是主要的问题时，表设计可以不符合四个范式。四个范式确保了不会出现异常，但也可能由此导致过于纯洁的设计，使得表结构难于使用，所以在设计时需要进行综合判断，但首先确保符合四个范式，然后再进行精化修正是刚刚进入数据库设计领域时可以采用的最好办法。</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>11.设计出的表要具有较好的使用性，主要体现在查询时是否需要关联多张表且还需使用复杂的SQL技巧。我感觉遵守的范式越多，就越使SQL复杂，具体情况具体分析。设计出的表要尽可能减少数据冗余，确保数据的准确性，有效的控制冗余有助于提高数据库的性能</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>因此，考虑了以上条件之后，表设计约定规则如下：</strong></p>
+<ul>
+<li>规则1:表必须要有主键。</li>
+<li>规则2:一个字段只表示一个含义。</li>
+<li>规则3:总是包含两个日期字段:gmt_create(创建日期),gmt_modified(修改日期)，且这两个字段不应该包含有额外的业务逻辑。</li>
+<li>规则4:MySQL中，gmt_create、gmt_modified使用DATETIME类型。</li>
+<li>规则5:禁止使用复杂数据类型（数组，自定义类型等）。</li>
+<li>规则6: MySQL中，附属表拆分后，附属表id与主表id保持一致。不允许在附属表新增主键字段。</li>
+<li>规则7: MySQL中，存在过期概念的表，在其设计之初就必须有过期机制，且有明确的过期时间。过期数据必须迁移至历史表中。</li>
+<li>规则8: MySQL中，不再使用的表，必须通知DBA予以更名归档。</li>
+<li>规则9: MySQL中，线上表中若有不再使用的字段，为保证数据完整，禁止删除。</li>
+<li>规则10: MySQL中，禁止使用OCI驱动，全部使用THI驱动。</li>
+</ul>
+</blockquote>
+<br>
       
 
       
@@ -236,9 +355,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
+    <a href="/2019/08/03/2、Java面试和基础/11、其他总结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          1、杂七杂八面试题
+        
+      </div>
+    </a>
   
-    <a href="/2019/08/03/2、Java面试和基础/8、多线程和并发/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">1、多线程和并发</div>
+  
+    <a href="/2019/08/03/2、Java面试和基础/10、dubbo/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">1、dubbo和zookeeper</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -265,7 +393,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java线程池"><span class="toc-number">1.</span> <span class="toc-text">Java线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建方式"><span class="toc-number">1.1.</span> <span class="toc-text">创建方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程状态"><span class="toc-number">1.2.</span> <span class="toc-text">线程状态</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RabbitMQ"><span class="toc-number">2.</span> <span class="toc-text">RabbitMQ</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何避免消息丢失"><span class="toc-number">2.1.</span> <span class="toc-text">如何避免消息丢失</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#消息重复消费"><span class="toc-number">2.2.</span> <span class="toc-text">消息重复消费</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HashMap解决Hash冲突"><span class="toc-number">3.</span> <span class="toc-text">HashMap解决Hash冲突</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Mybatis中-与-的区别，哪个能防止SQL注入？"><span class="toc-number">1.</span> <span class="toc-text">Mybatis中$与#的区别，哪个能防止SQL注入？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库的主键外键和索引"><span class="toc-number">2.</span> <span class="toc-text">数据库的主键外键和索引</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQl服务占用cpu100-，如何排查问题？"><span class="toc-number">3.</span> <span class="toc-text">MySQl服务占用cpu100%，如何排查问题？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库左右外连接的区别"><span class="toc-number">4.</span> <span class="toc-text">数据库左右外连接的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#怎么优化SQL"><span class="toc-number">5.</span> <span class="toc-text">怎么优化SQL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#库表的设计方式"><span class="toc-number">6.</span> <span class="toc-text">库表的设计方式</span></a></li></ol>
                     </div>
                 </span>
             </div>

@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="名为小博客">
 <meta property="og:description" content="Jvm面试题">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-22T10:05:36.849Z">
+<meta property="og:updated_time" content="2019-08-27T02:42:07.557Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1、Jvm">
 <meta name="twitter:description" content="Jvm面试题">
@@ -189,6 +189,16 @@ var _hmt = _hmt || [];
 </ul>
 <br>
 
+<h1 id="初始化顺序"><a href="#初始化顺序" class="headerlink" title="初始化顺序"></a>初始化顺序</h1><ul>
+<li><strong>子类继承父类,在初始化子类的时候,顺位为访问父类静态代码块,子类静态代码块,父类代码块,子类代码块,父类构造方法,子类构造方法。</strong></li>
+</ul>
+<br>
+
+<h1 id="eden，from，to大小"><a href="#eden，from，to大小" class="headerlink" title="eden，from，to大小"></a>eden，from，to大小</h1><ul>
+<li>(eden(8) - from(1) - to(1))新生代1/3</li>
+</ul>
+<br>
+
 <h1 id="Java的GC不会内存泄露"><a href="#Java的GC不会内存泄露" class="headerlink" title="Java的GC不会内存泄露"></a>Java的GC不会内存泄露</h1><ul>
 <li>垃圾回收机制通过对象与Root对象的可达性判断内存是否可以被回收</li>
 <li>但由于编程错误或其他原因，导致过期的对象引用仍然被持有，垃圾回收器无法回收相关空间。</li>
@@ -299,18 +309,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2019/08/03/2、Java面试和基础/10、dubbo/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/08/03/2、Java面试和基础/8、多线程和并发/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          1、dubbo和zookeeper
+          1、多线程和并发
         
       </div>
     </a>
   
   
-    <a href="/2019/08/03/2、Java面试和基础/7、缓存/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">1、Redis和缓存面试题</div>
+    <a href="/2019/08/03/2、Java面试和基础/6、事务/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">1、事务面试题</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -337,7 +347,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#加载类的过程"><span class="toc-number">1.</span> <span class="toc-text">加载类的过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java的GC不会内存泄露"><span class="toc-number">2.</span> <span class="toc-text">Java的GC不会内存泄露</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM宕机怎么解决"><span class="toc-number">3.</span> <span class="toc-text">JVM宕机怎么解决</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#加载类的过程"><span class="toc-number">1.</span> <span class="toc-text">加载类的过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#初始化顺序"><span class="toc-number">2.</span> <span class="toc-text">初始化顺序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#eden，from，to大小"><span class="toc-number">3.</span> <span class="toc-text">eden，from，to大小</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java的GC不会内存泄露"><span class="toc-number">4.</span> <span class="toc-text">Java的GC不会内存泄露</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM宕机怎么解决"><span class="toc-number">5.</span> <span class="toc-text">JVM宕机怎么解决</span></a></li></ol>
                     </div>
                 </span>
             </div>
