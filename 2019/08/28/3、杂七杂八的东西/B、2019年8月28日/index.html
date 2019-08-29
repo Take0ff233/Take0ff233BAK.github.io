@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>1、dubbo和zookeeper | 名为小博客</title>
+  <title>2019年8月28日总结 | 名为小博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="dubbo和zookeeper面试题">
+  <meta name="description" content="2019年8月28日">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1、dubbo和zookeeper">
-<meta property="og:url" content="http://yoursite.com/2019/08/03/2、Java面试和基础/10、dubbo/index.html">
+<meta property="og:title" content="2019年8月28日总结">
+<meta property="og:url" content="http://yoursite.com/2019/08/28/3、杂七杂八的东西/B、2019年8月28日/index.html">
 <meta property="og:site_name" content="名为小博客">
-<meta property="og:description" content="dubbo和zookeeper面试题">
+<meta property="og:description" content="2019年8月28日">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/img/ApacheDubbo/Dubbo1.png">
-<meta property="og:updated_time" content="2019-08-22T08:34:14.381Z">
+<meta property="og:image" content="http://yoursite.com/img/%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190828183317.jpg">
+<meta property="og:updated_time" content="2019-08-28T14:02:01.260Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="1、dubbo和zookeeper">
-<meta name="twitter:description" content="dubbo和zookeeper面试题">
-<meta name="twitter:image" content="http://yoursite.com/img/ApacheDubbo/Dubbo1.png">
+<meta name="twitter:title" content="2019年8月28日总结">
+<meta name="twitter:description" content="2019年8月28日">
+<meta name="twitter:image" content="http://yoursite.com/img/%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190828183317.jpg">
   
     <link rel="alternative" href="/atom.xml" title="名为小博客" type="application/atom+xml">
   
@@ -159,221 +159,90 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2、Java面试和基础/10、dubbo" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-3、杂七杂八的东西/B、2019年8月28日" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      1、dubbo和zookeeper
+      2019年8月28日总结
     </h1>
   
 
         
-        <a href="/2019/08/03/2、Java面试和基础/10、dubbo/" class="archive-article-date">
-  	<time datetime="2019-08-02T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-03</time>
+        <a href="/2019/08/28/3、杂七杂八的东西/B、2019年8月28日/" class="archive-article-date">
+  	<time datetime="2019-08-27T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>dubbo和zookeeper面试题</li>
-</ul>
+        <br>
+
+<blockquote>
+<p><strong>2019年8月28日</strong></p>
+</blockquote>
 <a id="more"></a>
 
 <br>
 
-<h1 id="dubbo主要原理使用-dubbo简介"><a href="#dubbo主要原理使用-dubbo简介" class="headerlink" title="dubbo主要原理使用　dubbo简介"></a>dubbo主要原理使用　<a href="/2019/06/26/Java/Apache_Dubbo分布式框架/">dubbo简介</a></h1><ul>
-<li><a href="https://www.cnblogs.com/steven520213/p/7606598.html" target="_blank" rel="noopener">博客园 : dubbo实现原理简单介绍</a></li>
-<li><a href="https://www.jianshu.com/p/292fcdcfe41e" target="_blank" rel="noopener">简书 : dubbo原理、应用与面经总结</a></li>
-</ul>
-<p><img src="/img/ApacheDubbo/Dubbo1.png" alt></p>
-<hr>
-<ul>
-<li>服务容器负责启动，加载，运行服务提供者。</li>
-<li>服务提供者在启动时，向注册中心注册自己提供的服务。</li>
-<li>服务消费者在启动时，向注册中心订阅自己所需的服务。</li>
-<li>注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者。</li>
-<li>服务消费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用。</li>
-<li>服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。</li>
-</ul>
-<hr>
-<ul>
-<li><strong>Dubbo 架构具有以下几个特点，分别是连通性、健壮性、伸缩性、以及向未来架构的升级性。</strong><ul>
-<li><strong>连通性</strong><ul>
-<li>注册中心负责服务地址的注册与查找，相当于目录服务，服务提供者和消费者只在启动时与注册中心交互，注册中心不转发请求，压力较小</li>
-<li>监控中心负责统计各服务调用次数，调用时间等，统计先在内存汇总后每分钟一次发送到监控中心服务器，并以报表展示</li>
-<li>服务提供者向注册中心注册其提供的服务，并汇报调用时间到监控中心，此时间不包含网络开销</li>
-<li>服务消费者向注册中心获取服务提供者地址列表，并根据负载算法直接调用提供者，同时汇报调用时间到监控中心，此时间包含网络开销</li>
-<li>注册中心，服务提供者，服务消费者三者之间均为长连接，监控中心除外</li>
-<li>注册中心通过长连接感知服务提供者的存在，服务提供者宕机，注册中心将立即推送事件通知消费者</li>
-<li>注册中心和监控中心全部宕机，不影响已运行的提供者和消费者，消费者在本地缓存了提供者列表</li>
-<li>注册中心和监控中心都是可选的，服务消费者可以直连服务提供者</li>
+<h1 id="SpringCloud的组件"><a href="#SpringCloud的组件" class="headerlink" title="SpringCloud的组件"></a>SpringCloud的组件</h1><ul>
+<li>服务发现：Netflix Eureka<ul>
+<li>实现服务治理（服务注册与发现）</li>
+<li>由<strong>服务端（注册中心：支持集群）</strong>和<strong>客户端（Java服务）</strong>组成</li>
+<li>应用启动时，客户端会向服务端注册服务信息，同时将服务端信息缓存在本地</li>
+<li>客户端和服务端周期性进行心跳交互，用于服务续约和更新服务信息</li>
 </ul>
 </li>
-<li><strong>健壮性</strong><ul>
-<li>监控中心宕掉不影响使用，只是丢失部分采样数据</li>
-<li>数据库宕掉后，注册中心仍能通过缓存提供服务列表查询，但不能注册新服务</li>
-<li>注册中心对等集群，任意一台宕掉后，将自动切换到另一台</li>
-<li>注册中心全部宕掉后，服务提供者和服务消费者仍能通过本地缓存通讯</li>
-<li>服务提供者无状态，任意一台宕掉后，不影响使用</li>
-<li>服务提供者全部宕掉后，服务消费者应用将无法使用，并无限次重连等待服务提供者恢复</li>
+<li>客户端负载均衡：Netflix Ribbon<ul>
+<li>为客户端提供负载均衡</li>
+<li>基于Http和Tcp的客户端负载均衡工具</li>
 </ul>
 </li>
-<li><strong>伸缩性</strong><ul>
-<li>注册中心为对等集群，可动态增加机器部署实例，所有客户端将自动发现新的注册中心</li>
-<li>服务提供者无状态，可动态增加机器部署实例，注册中心将推送新的服务提供者信息给消费者</li>
+<li>断路器：Netflix Hystrix<ul>
+<li>保护系统，控制故障范围。</li>
+<li>服务降级</li>
 </ul>
 </li>
-<li><strong>升级性</strong><ul>
-<li>当服务集群规模进一步扩大，带动IT治理结构进一步升级，需要实现动态部署，进行流动计算，现有分布式服务架构不会带来阻力。</li>
+<li>服务网关：Netflix Zuul<ul>
+<li>Api网关，路由，负载均衡等多种功能</li>
+<li>请求优先访问zuul然后转发到各个微服务</li>
 </ul>
 </li>
+<li>分布式配置：SpringCloudConfig<ul>
+<li>配置管理，分服务端和客户端。</li>
 </ul>
 </li>
 </ul>
 <br>
 
-<h1 id="zookeeper主要原理使用"><a href="#zookeeper主要原理使用" class="headerlink" title="zookeeper主要原理使用"></a>zookeeper主要原理使用</h1><ul>
-<li>服务提供者(Provider)启动时: 向 <code>/dubbo/com.foo.BarService/providers</code> 目录下写入自己的 URL 地址</li>
-<li>服务消费者(Consumer)启动时: 订阅 <code>/dubbo/com.foo.BarService/providers</code> 目录下的提供者 URL 地址。并向 <code>/dubbo/com.foo.BarService/consumers</code> 目录下写入自己的 URL 地址</li>
-<li>监控中心(Monitor)启动时: 订阅 <code>/dubbo/com.foo.BarService</code> 目录下的所有提供者和消费者 URL 地址</li>
-</ul>
-<hr>
-<ul>
-<li><strong>Zookeeper的保证</strong><ul>
-<li>顺序性，client的updates请求都会根据它发出的顺序被顺序的处理；</li>
-<li>原子性,  一个update操作要么成功要么失败，没有其他可能的结果；</li>
-<li>一致的镜像，client不论连接到哪个server，展示给它都是同一个视图；</li>
-<li>可靠性，一旦一个update被应用就被持久化了，除非另一个update请求更新了当前值</li>
-<li>实时性，对于每个client它的系统视图都是最新的</li>
-</ul>
-</li>
-</ul>
-<hr>
-<ul>
-<li>领导者（Leader) : 领导者不接受client的请求，负责进行投票的发起和决议，最终更新状态。</li>
-<li>跟随者（Follower）: Follower用于接收客户请求并返回客户结果。参与Leader发起的投票。</li>
-<li>观察者（observer）: Oberserver可以接收客户端连接，将写请求转发给leader节点。但是Observer不参加投票过程，只是同步leader的状态。Observer为系统扩展提供了一种方法。</li>
-<li>学习者 ( Learner ) : 和leader进行状态同步的server统称Learner，上述Follower和Observer都是Learner。</li>
-</ul>
-<hr>
-<ul>
-<li><strong>Zookeeper的核心是原子广播，这个机制保证了各个server之间的同步。实现这个机制的协议叫做Zab协议</strong><ul>
-<li>Zab协议有两种模式，它们分别是<strong>恢复模式</strong>和<strong>广播模式</strong></li>
-</ul>
-</li>
-<li><strong>当服务启动或者在领导者崩溃后，Zab就进入了恢复模式</strong><ul>
-<li>当领导者被选举出来，且大多数server的完成了和leader的状态同步以后，恢复模式就结束了</li>
-<li>状态同步保证了leader和server具有相同的系统状态。</li>
-</ul>
-</li>
-<li><strong>一旦leader已经和多数的follower进行了状态同步后，他就可以开始广播消息了，即进入广播状态</strong><ul>
-<li>这时候当一个server加入zookeeper服务中，它会在恢复模式下启动，发现leader，并和leader进行状态同步。</li>
-<li>待到同步结束，它也参与消息广播。</li>
-</ul>
-</li>
-<li><strong>Zookeeper服务一直维持在Broadcast状态，直到leader崩溃了或者leader失去了大部分的followers支持。</strong><ul>
-<li>Broadcast模式极其类似于分布式事务中的2pc（two-phrase commit 两阶段提交）</li>
-<li>即leader提起一个决议，由followers进行投票，leader对投票结果进行计算决定是否通过该决议</li>
-<li>如果通过执行该决议（事务），否则什么也不做。</li>
-</ul>
-</li>
-<li><strong>广播模式需要保证proposal被按顺序处理，因此zk采用了递增的事务id号(zxid)来保证。</strong><ul>
-<li>所有的提议(proposal)都在被提出的时候加上了zxid。</li>
-<li>实现中zxid是一个64为的数字，它高32位是epoch用来标识leader关系是否改变，每次一个leader被选出来，它都会有一个新的epoch。低32位是个递增计数。</li>
-</ul>
-</li>
-<li><strong>当leader崩溃或者leader失去大多数的follower，这时候zk进入恢复模式</strong><ul>
-<li>恢复模式需要重新选举出一个新的leader，让所有的server都恢复到一个正确的状态。<ul>
-<li>首先看一下选举的过程，zk的实现中用了基于paxos算法（主要是fastpaxos）的实现。具体如下：</li>
-<li>1.每个Server启动以后都询问其它的Server它要投票给谁。</li>
-<li>2.对于其他server的询问，server每次根据自己的状态都回复自己推荐的leader的id和上一次处理事务的zxid（系统启动时每个server都会推荐自己）</li>
-<li>3.收到所有Server回复以后，就计算出zxid最大的哪个Server，并将这个Server相关信息设置成下一次要投票的Server。</li>
-<li>4.计算这过程中获得票数最多的的sever为获胜者，如果获胜者的票数超过半数，则改server被选为leader。否则，继续这个过程，直到leader被选举出来。</li>
-<li>恢复模式下，如果是重新刚从崩溃状态恢复的或者刚启动的的server还会从磁盘快照中恢复数据和会话信息。（zk会记录事务日志并定期进行快照，方便在恢复时进行状态恢复）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>选完leader以后，zk就进入状态同步过程。</strong><ul>
-<li>1.leader就会开始等待server连接</li>
-<li>2.Follower连接leader，将最大的zxid发送给leader</li>
-<li>3.Leader根据follower的zxid确定同步点</li>
-<li>4.完成同步后通知follower 已经成为uptodate状态</li>
-<li>5.Follower收到uptodate消息后，又可以重新接受client的请求进行服务了。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="角色执行流程"><a href="#角色执行流程" class="headerlink" title="角色执行流程"></a>角色执行流程</h2><ul>
-<li><strong>Leader主线程：</strong><ul>
-<li>1.首先leader开始恢复数据和清除session<ul>
-<li>启动zk实例，建立请求处理链(Leader的请求处理链)：</li>
-<li>PrepRequestProcessor-&gt;ProposalRequestProcessor-&gt;CommitProcessor-&gt;Leader.ToBeAppliedRequestProcessor -&gt;FinalRequestProcessor</li>
-</ul>
-</li>
-<li>2.得到一个新的epoch，标识一个新的leader , 并获得最大zxid（方便进行数据同步）</li>
-<li>3.建立一个学习者接受线程<ul>
-<li>（来接受新的followers的连接，follower连接后确定followers的zxvid号，来确定是需要对follower进行什么同步措施，比如是差异同步(diff)，还是截断（truncate）同步，还是快照同步）</li>
-</ul>
-</li>
-<li>4.向follower建立一个握手过程leader-&gt;follower NEWLEADER消息，并等待直到多数server发送了ack</li>
-<li>5.Leader不断的查看已经同步了的follower数量，如果同步数量少于半数，则回到looking状态重新进行leaderElection过程，否则继续step5</li>
-</ul>
-</li>
-<li><strong>LearnerCnxAcceptor线程</strong><ul>
-<li>1.该线程监听Learner的连接</li>
-<li>2.接受Learner请求，并为每个Learner创建一个LearnerHandler来服务</li>
-</ul>
-</li>
-<li><strong>LearnerHandler线程的服务流程</strong><ul>
-<li>1.检查server来的第一个包是否为follower.info或者observer.info，如果不是则无法建立握手。</li>
-<li>2.得到Learner的zxvid，对比自身的zxvid，确定同步点</li>
-<li>3.和Learner建立第二次握手，向Learner发送NEWLEADER消息</li>
-<li>4.与server进行数据同步。</li>
-<li>5.同步结束，知会server同步已经ok，可以接收client的请求。</li>
-<li>6.不断读取follower消息判断消息类型<ul>
-<li>1).如果是LEADER.ACK,记录follower的ack消息，超过半数ack，将proposal提交(Commit)</li>
-<li>2).如果是LEADER.PING，则维持session（延长session失效时间）</li>
-<li>3).如果是LEADER.REQEST，则将request放入请求链进行处理–Leader写请求发起proposal，然后根据follower回复的结果来确定是否commit的。</li>
-</ul>
-</li>
-<li>最后由FinallRequestProcessor来实际进行持久化，并回复信息给相应的response给server</li>
-</ul>
-</li>
-<li><strong>Follower的工作流程:</strong><ul>
-<li>1.启动zk实例，建立请求处理链:FollowerRequestProcessor-&gt;CommitProcessor-&gt;FinalProcessor</li>
-<li>2.follower首先会连接leader，并将zxid和id发给leader</li>
-<li>3.接收NEWLEADER消息，完成握手过程。</li>
-<li>4.同leader进行状态同步</li>
-<li>5.完成同步后，follower可以接收client的连接</li>
-<li>5.接收到client的请求,根据请求类型<ul>
-<li>对于写操作, FollowerRequestProcessor会将该操作作为LEADER.REQEST发给LEADER由LEADER发起投票。</li>
-<li>对于读操作，则通过请求处理链的最后一环FinalProcessor将结果返回给客户端</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>observer流程和Follower的唯一不同的地方就是observer不会参加leader发起的投票。</strong></li>
+<h1 id="token登录"><a href="#token登录" class="headerlink" title="token登录"></a>token登录</h1><p><img src="/img/%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190828183317.jpg" alt></p>
+<br>
+
+<h1 id="JWT-Shiro进行权限认证"><a href="#JWT-Shiro进行权限认证" class="headerlink" title="JWT+Shiro进行权限认证"></a>JWT+Shiro进行权限认证</h1><ul>
+<li>Jwt生成token转发到Shiro的Subject进行授权认证</li>
+<li>通过之后权限被Shiro接手</li>
 </ul>
 <br>
 
-<h1 id="zookeeper宕机后-消费者还能调用服务者吗"><a href="#zookeeper宕机后-消费者还能调用服务者吗" class="headerlink" title="zookeeper宕机后,消费者还能调用服务者吗"></a>zookeeper宕机后,消费者还能调用服务者吗</h1><ul>
-<li><strong>可以</strong></li>
-<li>因为提供者通过本地缓存进行通讯的，如果本地缓存被清除了，那双方就不能通信了</li>
-<li><strong>dubbo还有以下的健壮性：</strong><ul>
-<li>1、监控中心宕机，只是不能进行数据的采集，还是不影响双方通信的</li>
-<li>2、数据库宕机，双方仍可以通过本地缓存进行通信，但是不能注册新服务</li>
-<li>3、注册中心对等集群，任意一台宕机后，将自动切换到另一台</li>
-<li>4、服务提供者全部宕机，消费者将无法使用，并且会无限次重连，等待服务者提供服务</li>
-</ul>
-</li>
+<h1 id="poi导入导出"><a href="#poi导入导出" class="headerlink" title="poi导入导出"></a>poi导入导出</h1><ul>
+<li>读取模板，创建excel对象</li>
+<li>读取模板样式并保存</li>
+<li>循环查询到的数据，设置模板格式并保存数据</li>
+<li>输出excel</li>
 </ul>
 <br>
+
+<h1 id="SkuSpu表关系和结构"><a href="#SkuSpu表关系和结构" class="headerlink" title="SkuSpu表关系和结构"></a>SkuSpu表关系和结构</h1><ul>
+<li>Spu包含Sku</li>
+<li>Spu是商品聚合的最小单位，描述的是一个商品信息</li>
+<li>Sku是库存进出计量的单位，描述的是一个商品信息的一个属性有多个不同的值来进行分割。（笛卡尔积构成）</li>
+</ul>
+<br>
+
+<h1 id="HashMap复杂类型的key"><a href="#HashMap复杂类型的key" class="headerlink" title="HashMap复杂类型的key"></a>HashMap复杂类型的key</h1><h1 id="序列化的包"><a href="#序列化的包" class="headerlink" title="序列化的包"></a>序列化的包</h1>
       
 
       
@@ -394,18 +263,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2019/08/03/2、Java面试和基础/4、Spring/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          1、Spring面试题
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/08/03/2、Java面试和基础/5、databaseMybatis/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">1、MyBatis面试题</div>
+    <a href="/2019/08/03/2、Java面试和基础/6、事务/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">1、事务面试题</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -432,7 +292,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#dubbo主要原理使用-dubbo简介"><span class="toc-number">1.</span> <span class="toc-text">dubbo主要原理使用　dubbo简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#zookeeper主要原理使用"><span class="toc-number">2.</span> <span class="toc-text">zookeeper主要原理使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#角色执行流程"><span class="toc-number">2.1.</span> <span class="toc-text">角色执行流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#zookeeper宕机后-消费者还能调用服务者吗"><span class="toc-number">3.</span> <span class="toc-text">zookeeper宕机后,消费者还能调用服务者吗</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringCloud的组件"><span class="toc-number">1.</span> <span class="toc-text">SpringCloud的组件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#token登录"><span class="toc-number">2.</span> <span class="toc-text">token登录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JWT-Shiro进行权限认证"><span class="toc-number">3.</span> <span class="toc-text">JWT+Shiro进行权限认证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#poi导入导出"><span class="toc-number">4.</span> <span class="toc-text">poi导入导出</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SkuSpu表关系和结构"><span class="toc-number">5.</span> <span class="toc-text">SkuSpu表关系和结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HashMap复杂类型的key"><span class="toc-number">6.</span> <span class="toc-text">HashMap复杂类型的key</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#序列化的包"><span class="toc-number">7.</span> <span class="toc-text">序列化的包</span></a></li></ol>
                     </div>
                 </span>
             </div>
