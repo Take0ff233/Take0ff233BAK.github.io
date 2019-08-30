@@ -16,7 +16,7 @@
 <meta property="og:description" content="2019年8月28日">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/img/%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190828183317.jpg">
-<meta property="og:updated_time" content="2019-08-28T14:02:01.260Z">
+<meta property="og:updated_time" content="2019-08-30T02:04:39.275Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019年8月28日总结">
 <meta name="twitter:description" content="2019年8月28日">
@@ -188,6 +188,26 @@ var _hmt = _hmt || [];
 
 <br>
 
+<h1 id="Innodb的锁类型"><a href="#Innodb的锁类型" class="headerlink" title="Innodb的锁类型"></a>Innodb的锁类型</h1><ul>
+<li>共享/排它锁(Shared and Exclusive Locks)</li>
+<li>意向锁(Intention Locks)</li>
+<li>记录锁(Record Locks)</li>
+<li>间隙锁(Gap Locks)</li>
+<li>临键锁(Next-key Locks)</li>
+<li>插入意向锁(Insert Intention Locks)</li>
+<li>自增锁(Auto-inc Locks)</li>
+</ul>
+<br>
+
+<h1 id="MySQL执行过程"><a href="#MySQL执行过程" class="headerlink" title="MySQL执行过程"></a>MySQL执行过程</h1><ul>
+<li>客户端发送一条查询给服务器</li>
+<li>服务器先会检查查询缓存，如果命中了缓存，则立即返回存储在缓存中的结果。否则进入下一阶段</li>
+<li>服务器端进行SQL解析、预处理，再由优化器生成对应的执行计划</li>
+<li>MySQL根据优化器生成的执行计划，调用存储引擎的API来执行查询</li>
+<li>将结果返回给客户端</li>
+</ul>
+<br>
+
 <h1 id="SpringCloud的组件"><a href="#SpringCloud的组件" class="headerlink" title="SpringCloud的组件"></a>SpringCloud的组件</h1><ul>
 <li>服务发现：Netflix Eureka<ul>
 <li>实现服务治理（服务注册与发现）</li>
@@ -242,7 +262,6 @@ var _hmt = _hmt || [];
 </ul>
 <br>
 
-<h1 id="HashMap复杂类型的key"><a href="#HashMap复杂类型的key" class="headerlink" title="HashMap复杂类型的key"></a>HashMap复杂类型的key</h1><h1 id="序列化的包"><a href="#序列化的包" class="headerlink" title="序列化的包"></a>序列化的包</h1>
       
 
       
@@ -263,9 +282,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
+    <a href="/2019/08/30/1、学习资料大全/19、通关Docker/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          19、Docker通关！
+        
+      </div>
+    </a>
   
-    <a href="/2019/08/03/2、Java面试和基础/6、事务/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">1、事务面试题</div>
+  
+    <a href="/2019/08/03/2、Java面试和基础/10、dubbo/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">1、dubbo和zookeeper</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -292,7 +320,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringCloud的组件"><span class="toc-number">1.</span> <span class="toc-text">SpringCloud的组件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#token登录"><span class="toc-number">2.</span> <span class="toc-text">token登录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JWT-Shiro进行权限认证"><span class="toc-number">3.</span> <span class="toc-text">JWT+Shiro进行权限认证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#poi导入导出"><span class="toc-number">4.</span> <span class="toc-text">poi导入导出</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SkuSpu表关系和结构"><span class="toc-number">5.</span> <span class="toc-text">SkuSpu表关系和结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HashMap复杂类型的key"><span class="toc-number">6.</span> <span class="toc-text">HashMap复杂类型的key</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#序列化的包"><span class="toc-number">7.</span> <span class="toc-text">序列化的包</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Innodb的锁类型"><span class="toc-number">1.</span> <span class="toc-text">Innodb的锁类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL执行过程"><span class="toc-number">2.</span> <span class="toc-text">MySQL执行过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringCloud的组件"><span class="toc-number">3.</span> <span class="toc-text">SpringCloud的组件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#token登录"><span class="toc-number">4.</span> <span class="toc-text">token登录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JWT-Shiro进行权限认证"><span class="toc-number">5.</span> <span class="toc-text">JWT+Shiro进行权限认证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#poi导入导出"><span class="toc-number">6.</span> <span class="toc-text">poi导入导出</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SkuSpu表关系和结构"><span class="toc-number">7.</span> <span class="toc-text">SkuSpu表关系和结构</span></a></li></ol>
                     </div>
                 </span>
             </div>
